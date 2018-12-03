@@ -1,4 +1,4 @@
-package application.model;
+package application.dao;
 
 import application.dao.ApprenantDAO;
 import application.model.Apprenant;
