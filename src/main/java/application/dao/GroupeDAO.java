@@ -1,4 +1,8 @@
-package dao;
+package application.dao;
+
+import application.model.Groupe;
+
+import java.util.List;
 
 public interface GroupeDAO {
     public List<Groupe> findAll();

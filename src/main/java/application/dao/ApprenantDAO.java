@@ -1,4 +1,8 @@
-package dao;
+package application.dao;
+
+import application.model.Apprenant;
+
+import java.util.List;
 
 public interface ApprenantDAO {
     public List<Apprenant> findAll();

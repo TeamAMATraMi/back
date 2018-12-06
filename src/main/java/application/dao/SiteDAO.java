@@ -1,4 +1,8 @@
-package dao;
+package application.dao;
+
+import application.model.Site;
+
+import java.util.List;
 
 public interface SiteDAO {
     public List<Site> findAll();

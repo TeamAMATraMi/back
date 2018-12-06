@@ -1,9 +1,13 @@
-package services;
+package application.services;
 
-import dao.GroupeDAO;
+import application.dao.GroupeDAO;
+import application.model.Groupe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@RestController
 public class GroupeController {
 
     @Autowired
