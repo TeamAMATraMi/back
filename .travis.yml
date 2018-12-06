@@ -7,3 +7,5 @@ branches:
     - master
 script:
   - "./mvnw clean install -B"
+
+
