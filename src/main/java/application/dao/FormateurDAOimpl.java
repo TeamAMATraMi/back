@@ -1,10 +1,12 @@
 package application.dao;
 
 import application.model.Formateur;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class FormateurDAOimpl implements FormateurDAO {
 
     private List<Formateur> listeFormateurs = new ArrayList<>();

@@ -1,10 +1,12 @@
 package application.dao;
 
 import application.model.Enfant;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class EnfantDAOimpl implements EnfantDAO {
 
     private List<Enfant> listeEnfants = new ArrayList<>();

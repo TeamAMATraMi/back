@@ -1,10 +1,12 @@
 package application.dao;
 
 import application.model.Presence;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class PresenceDAOimpl implements PresenceDAO {
 
     private List<Presence> listePresence = new ArrayList<>();

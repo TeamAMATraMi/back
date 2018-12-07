@@ -1,10 +1,12 @@
 package application.dao;
 
 import application.model.QuartierPrioritaire;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class QuartierPrioritaireDAOimpl implements QuartierPrioritaireDAO {
 
     private List<QuartierPrioritaire> listeQuartierPrioritaire = new ArrayList<>();

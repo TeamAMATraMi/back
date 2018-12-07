@@ -1,10 +1,12 @@
 package application.dao;
 
 import application.model.Sejour;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class SejourDAOimpl implements SejourDAO {
 
     private List<Sejour> listeSejours = new ArrayList<>();
