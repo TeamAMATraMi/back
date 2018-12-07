@@ -1,10 +1,12 @@
 package application.dao;
 
 import application.model.Pays;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class PaysDAOimpl implements PaysDAO {
 
     private List<Pays> listePays = new ArrayList<>();
