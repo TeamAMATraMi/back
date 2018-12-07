@@ -28,7 +28,7 @@ public class SejourDAOimpl implements SejourDAO {
 
     @Override
     public void add(Sejour sejour) {
-
+        this.listeSejours.add(sejour);
     }
 
     @Override
