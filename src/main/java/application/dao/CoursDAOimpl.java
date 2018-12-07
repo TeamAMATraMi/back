@@ -1,10 +1,12 @@
 package application.dao;
 
 import application.model.Cours;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class CoursDAOimpl implements CoursDAO {
 
     private List<Cours> listeCours = new ArrayList<>();
