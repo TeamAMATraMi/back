@@ -25,12 +25,12 @@ public class GroupeController {
 
     @PostMapping("/groupes")
     public void postGroupe(@RequestBody Groupe groupe) {
-        this.groupeDAO.add(groupe);
+        this.groupeDAO.save(groupe);
     }
 
-    @PutMapping("/groupes/{id}")
-    public Groupe updateGroupeById(@PathVariable int id, @RequestBody Groupe groupe) {
-        return this.groupeDAO.updateById(id, groupe);
+    @PutMapping("/groupes")
+    public Groupe updateGroupe(@RequestBody Groupe groupe) {
+        return this.groupeDAO.save(groupe);
     }
 
     @DeleteMapping("/groupes/{id}")

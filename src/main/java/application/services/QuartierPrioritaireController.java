@@ -25,12 +25,12 @@ public class QuartierPrioritaireController {
 
     @PostMapping("/quartiers")
     public void postQuartier(@RequestBody QuartierPrioritaire quartierPrioritaire) {
-        this.quartierPrioritaireDAO.add(quartierPrioritaire);
+        this.quartierPrioritaireDAO.save(quartierPrioritaire);
     }
 
-    @PutMapping("/quartiers/{id}")
-    public QuartierPrioritaire updateQuartierById(@PathVariable int id, @RequestBody QuartierPrioritaire quartierPrioritaire) {
-        return this.quartierPrioritaireDAO.updateById(id, quartierPrioritaire);
+    @PutMapping("/quartiers")
+    public QuartierPrioritaire updateQuartier(@RequestBody QuartierPrioritaire quartierPrioritaire) {
+        return this.quartierPrioritaireDAO.save(quartierPrioritaire);
     }
 
     @DeleteMapping("/quartiers/{id}")

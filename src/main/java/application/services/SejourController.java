@@ -25,12 +25,12 @@ public class SejourController {
 
     @PostMapping("/sejours")
     public void postSejour(@RequestBody Sejour sejour) {
-        this.sejourDAO.add(sejour);
+        this.sejourDAO.save(sejour);
     }
 
-    @PutMapping("/sejours/{id}")
-    public Sejour updateSejourById(@PathVariable int id, @RequestBody Sejour sejour) {
-        return this.sejourDAO.updateById(id, sejour);
+    @PutMapping("/sejours")
+    public Sejour updateSejour(@RequestBody Sejour sejour) {
+        return this.sejourDAO.save(sejour);
     }
 
     @DeleteMapping("/sejours/{id}")

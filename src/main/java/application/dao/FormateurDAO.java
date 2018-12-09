@@ -1,13 +1,15 @@
 package application.dao;
 
 import application.model.Formateur;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface FormateurDAO {
+@Repository
+public interface FormateurDAO extends JpaRepository<Formateur, Integer> {
     public List<Formateur> findAll();
     public Formateur findById(int id);
-    public void add(Formateur formateur);
-    public Formateur updateById(int id, Formateur formateur);
+    public Formateur save(Formateur formateur);
     public void deleteById(int id);
 }

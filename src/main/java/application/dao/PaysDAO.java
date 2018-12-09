@@ -1,13 +1,15 @@
 package application.dao;
 
 import application.model.Pays;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface PaysDAO {
+@Repository
+public interface PaysDAO extends JpaRepository<Pays, Integer> {
     public List<Pays> findAll();
     public Pays findById(int id);
-    public void add(Pays formateur);
-    public Pays updateById(int id, Pays formateur);
+    public Pays save(Pays formateur);
     public void deleteById(int id);
 }

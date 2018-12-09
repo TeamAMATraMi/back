@@ -25,12 +25,12 @@ public class PaysController {
 
     @PostMapping("/pays")
     public void postPays(@RequestBody Pays pays) {
-        this.paysDAO.add(pays);
+        this.paysDAO.save(pays);
     }
 
-    @PutMapping("/pays/{id}")
-    public Pays updatePaysById(@PathVariable int id, @RequestBody Pays pays) {
-        return this.paysDAO.updateById(id, pays);
+    @PutMapping("/pays")
+    public Pays updatePays(@RequestBody Pays pays) {
+        return this.paysDAO.save(pays);
     }
 
     @DeleteMapping("/pays/{id}")

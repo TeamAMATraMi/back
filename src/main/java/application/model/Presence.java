@@ -1,8 +1,17 @@
 package application.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Presence {
 
-    private int id, idApprenant;
+    @Id
+    @GeneratedValue
+    private int id;
+
+    private int idApprenant;
     private boolean present;
 
     public Presence(int id, int idApprenant, boolean present) {

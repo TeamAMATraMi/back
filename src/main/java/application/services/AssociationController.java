@@ -25,12 +25,12 @@ public class AssociationController {
 
     @PostMapping("/associations")
     public void postAssociation(@RequestBody Association association) {
-        this.associationDAO.add(association);
+        this.associationDAO.save(association);
     }
 
-    @PutMapping("/associations/{id}")
-    public Association updateAssociationById(@PathVariable int id, @RequestBody Association association) {
-        return this.associationDAO.updateById(id, association);
+    @PutMapping("/associations")
+    public Association updateAssociation(@RequestBody Association association) {
+        return this.associationDAO.save(association);
     }
 
     @DeleteMapping("/associations/{id}")
