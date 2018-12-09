@@ -25,12 +25,12 @@ public class ApprenantController {
 
     @PostMapping("/apprenants")
     public void postApprenant(@RequestBody Apprenant apprenant) {
-        this.apprenantDAO.add(apprenant);
+        this.apprenantDAO.save(apprenant);
     }
 
-    @PutMapping("/apprenants/{id}")
-    public Apprenant updateApprenantById(@PathVariable int id, @RequestBody Apprenant apprenant) {
-        return this.apprenantDAO.updateById(id, apprenant);
+    @PutMapping("/apprenants")
+    public Apprenant updateApprenant(@RequestBody Apprenant apprenant) {
+        return this.apprenantDAO.save(apprenant);
     }
 
     @DeleteMapping("/apprenants/{id}")

@@ -25,12 +25,12 @@ public class FormateurController {
 
     @PostMapping("/formateurs")
     public void postFormateur(@RequestBody Formateur formateur) {
-        this.formateurDAO.add(formateur);
+        this.formateurDAO.save(formateur);
     }
 
-    @PutMapping("/formateurs/{id}")
-    public Formateur updateFormateurById(@PathVariable int id, @RequestBody Formateur formateur) {
-        return this.formateurDAO.updateById(id, formateur);
+    @PutMapping("/formateurs")
+    public Formateur updateFormateur(@RequestBody Formateur formateur) {
+        return this.formateurDAO.save(formateur);
     }
 
     @DeleteMapping("/formateurs/{id}")

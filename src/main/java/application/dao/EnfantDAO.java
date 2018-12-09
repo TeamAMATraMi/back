@@ -1,13 +1,15 @@
 package application.dao;
 
 import application.model.Enfant;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface EnfantDAO {
+@Repository
+public interface EnfantDAO extends JpaRepository<Enfant, Integer> {
     public List<Enfant> findAll();
     public Enfant findById(int id);
-    public void add(Enfant enfant);
-    public Enfant updateById(int id, Enfant enfant);
+    public Enfant save(Enfant enfant);
     public void deleteById(int id);
 }

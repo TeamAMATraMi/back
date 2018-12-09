@@ -25,12 +25,12 @@ public class CoursController {
 
     @PostMapping("/cours")
     public void postCours(@RequestBody Cours cours) {
-        this.coursDAO.add(cours);
+        this.coursDAO.save(cours);
     }
 
-    @PutMapping("/cours/{id}")
-    public Cours updateCoursById(@PathVariable int id, @RequestBody Cours cours) {
-        return this.coursDAO.updateById(id, cours);
+    @PutMapping("/cours")
+    public Cours updateCours(@RequestBody Cours cours) {
+        return this.coursDAO.save(cours);
     }
 
     @DeleteMapping("/cours/{id}")

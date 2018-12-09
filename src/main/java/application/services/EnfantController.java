@@ -25,12 +25,12 @@ public class EnfantController {
 
     @PostMapping("/enfants")
     public void postEnfant(@RequestBody Enfant enfant) {
-        this.enfantDAO.add(enfant);
+        this.enfantDAO.save(enfant);
     }
 
-    @PutMapping("/enfants/{id}")
-    public Enfant updateEnfantById(@PathVariable int id, @RequestBody Enfant enfant) {
-        return this.enfantDAO.updateById(id, enfant);
+    @PutMapping("/enfants")
+    public Enfant updateEnfant(@RequestBody Enfant enfant) {
+        return this.enfantDAO.save(enfant);
     }
 
     @DeleteMapping("/enfants/{id}")

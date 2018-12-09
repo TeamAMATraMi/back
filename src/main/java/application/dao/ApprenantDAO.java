@@ -1,13 +1,15 @@
 package application.dao;
 
 import application.model.Apprenant;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface ApprenantDAO {
+@Repository
+public interface ApprenantDAO extends JpaRepository<Apprenant, Integer> {
     public List<Apprenant> findAll();
     public Apprenant findById(int id);
-    public void add(Apprenant apprenant);
-    public Apprenant updateById(int id, Apprenant apprenant);
+    public Apprenant save(Apprenant apprenant);
     public void deleteById(int id);
 }

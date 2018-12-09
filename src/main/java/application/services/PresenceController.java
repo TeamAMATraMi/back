@@ -25,12 +25,12 @@ public class PresenceController {
 
     @PostMapping("/presences")
     public void postPresence(@RequestBody Presence presence) {
-        this.presenceDAO.add(presence);
+        this.presenceDAO.save(presence);
     }
 
-    @PutMapping("/presences/{id}")
-    public Presence updatePresenceById(@PathVariable int id, @RequestBody Presence presence) {
-        return this.presenceDAO.updateById(id, presence);
+    @PutMapping("/presences")
+    public Presence updatePresence(@RequestBody Presence presence) {
+        return this.presenceDAO.save(presence);
     }
 
     @DeleteMapping("/presences/{id}")

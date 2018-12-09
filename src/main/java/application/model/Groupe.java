@@ -1,7 +1,16 @@
 package application.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Groupe {
+
+    @Id
+    @GeneratedValue
     private int idGroupe;
+
     private int idSite;
     private String nom;
 
