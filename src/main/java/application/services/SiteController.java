@@ -25,12 +25,12 @@ public class SiteController {
 
     @PostMapping("/sites")
     public void postSite(@RequestBody Site site) {
-        this.siteDAO.add(site);
+        this.siteDAO.save(site);
     }
 
-    @PutMapping("/sites/{id}")
-    public Site updateSiteById(@PathVariable int id, @RequestBody Site site) {
-        return this.siteDAO.updateById(id, site);
+    @PutMapping("/sites")
+    public Site updateSite(@RequestBody Site site) {
+        return this.siteDAO.save(site);
     }
 
     @DeleteMapping("/sites/{id}")

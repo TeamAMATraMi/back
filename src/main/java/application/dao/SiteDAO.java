@@ -1,13 +1,15 @@
 package application.dao;
 
 import application.model.Site;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface SiteDAO {
+@Repository
+public interface SiteDAO extends JpaRepository<Site, Integer> {
     public List<Site> findAll();
     public Site findById(int id);
-    public void add(Site site);
-    public Site updateById(int id, Site site);
+    public Site save(Site site);
     public void deleteById(int id);
 }
