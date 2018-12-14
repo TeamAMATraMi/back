@@ -1,6 +1,7 @@
 language: java
-
 jdk: oraclejdk8
-
 script:
-  - mvn package
+- mvn package
+before_install:
+- openssl aes-256-cbc -K $encrypted_02b52dc292ac_key -iv $encrypted_02b52dc292ac_iv
+  -in deploy_rsa.enc -out deploy_rsa -d
