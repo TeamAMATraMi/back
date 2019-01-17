@@ -1,5 +1,6 @@
 package application.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,7 +12,10 @@ public class Cours {
     @GeneratedValue
     private int id;
 
+    @Column(name = "idformateur")
     private int idFormateur;
+
+    @Column(name = "idgroupe")
     private int idGroupe;
     private String horaire;
     private String matiere;
