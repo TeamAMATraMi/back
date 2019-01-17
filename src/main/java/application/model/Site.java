@@ -9,23 +9,27 @@ public class Site {
 
     @Id
     @GeneratedValue
-    private int idSite;
+    private int id;
 
     private String ville;
 
     public Site() {}
 
-    public Site(int idSite, String ville) {
-        this.idSite = idSite;
+    public Site(int id, String ville) {
+        this.id = id;
         this.ville = ville;
     }
 
-    public int getIdSite() { return idSite; }
+    public int getId() {
+        return id;
+    }
 
-    public String getVille() { return ville; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public void setIdSite(int idSite) {
-        this.idSite = idSite;
+    public String getVille() {
+        return ville;
     }
 
     public void setVille(String ville) {
