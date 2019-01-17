@@ -41,7 +41,7 @@ CREATE TABLE `apprenant` (
   `date_naissance` date DEFAULT NULL,
   `genre` varchar(1) DEFAULT NULL,
   `pays_origine` varchar(50) DEFAULT NULL,
-  `nationalité` varchar(50) DEFAULT NULL,
+  `nationalite` varchar(50) DEFAULT NULL,
   `date_arrivee` date DEFAULT NULL,
   `quartier_prioritaire` int(11) DEFAULT NULL,
   `situation_personelle` varchar(50) DEFAULT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE `apprenant` (
 -- Contenu de la table `apprenant`
 --
 
-INSERT INTO `apprenant` (`id_apprenant`, `nom`, `prenom`, `telephone`, `adresse`, `code_postal`, `commune`, `id_groupe`, `date_inscription`, `auteur_dossier`, `majeur`, `date_naissance`, `genre`, `pays_origine`, `nationalité`, `date_arrivee`, `quartier_prioritaire`, `situation_personelle`, `prise_charge`, `rsa`, `temps_scolarisation`, `diplome`, `milieu_scolaire`, `niveau_langue`, `lire_langue`, `ecrire_langue`, `lire_alpha_latin`, `ecrire_alpha_latin`, `cotisation_payee`, `remarques`) VALUES
+INSERT INTO `apprenant` (`id`, `nom`, `prenom`, `telephone`, `adresse`, `code_postal`, `commune`, `id_groupe`, `date_inscription`, `auteur_dossier`, `majeur`, `date_naissance`, `genre`, `pays_origine`, `nationalite`, `date_arrivee`, `quartier_prioritaire`, `situation_personelle`, `prise_charge`, `rsa`, `temps_scolarisation`, `diplome`, `milieu_scolaire`, `niveau_langue`, `lire_langue`, `ecrire_langue`, `lire_alpha_latin`, `ecrire_alpha_latin`, `cotisation_payee`, `remarques`) VALUES
 (1234567, 'CENA', 'John', '+33656985698', '6, rue du ring', 55100, 'Verdun', 12345678, '2018-12-02', 123456, 1, '2000-12-02', 'M', 'FR', 'Français', '2018-12-02', 123, 'Celibataire', 1234, 0, 0, NULL, 0, 'A2', 1, 1, 1, 0, 1, NULL),
 (1765432, 'BOND', 'James', '+33600700715', '87, rue Aston Martin', 55700, 'Stenay', 81234567, '2018-12-02', 561234, 1, '1965-12-03', 'M', 'EN', 'Anglais', '2018-12-02', NULL, 'Celibataire', 3412, 1, 1, 'CAP', 0, 'A2', 1, 1, 1, 1, 0, NULL),
 (2176543, 'WAYNE', 'Bruce', '+33622115566', '98, boulevard du Batman', 55700, 'Baalon', 81234567, '2018-12-02', 612345, 1, '1978-02-03', 'M', 'AF', 'Afghan', '2018-12-02', 312, 'Celibataire', 3412, 0, 3, 'Bac', 0, 'A2', 1, 1, 0, 0, 1, NULL),
