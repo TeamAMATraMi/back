@@ -13,7 +13,7 @@ public class Formateur {
 
     private int idSite;
     private boolean salarie;
-    private String nom,prenom,telephone,adresse,commune;
+    private String nom, prenom, telephone, adresse, commune;
     private int codePostal;
 
     public Formateur(int id, int idSite, boolean salarie, String nom, String prenom, String telephone, String adresse, String commune, int codePostal) {

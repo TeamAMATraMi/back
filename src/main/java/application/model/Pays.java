@@ -11,7 +11,7 @@ public class Pays {
     @GeneratedValue
     private int id;
 
-    private String nationalite,langue;
+    private String nationalite, langue;
 
     public Pays(int id, String nationalite, String langue) {
         this.id = id;

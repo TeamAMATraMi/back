@@ -11,22 +11,26 @@ public class QuartierPrioritaire {
     @GeneratedValue
     private int id;
 
-    private String nomQuartier;
+    private String nom;
 
-    public QuartierPrioritaire(int id, String nomQuartier) {
+    public QuartierPrioritaire(int id, String nom) {
         this.id = id;
-        this.nomQuartier = nomQuartier;
+        this.nom = nom;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getNomQuartier() {
-        return nomQuartier;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setNomQuartier(String nomQuartier) {
-        this.nomQuartier = nomQuartier;
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 }

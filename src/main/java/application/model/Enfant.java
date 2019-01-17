@@ -11,12 +11,12 @@ public class Enfant {
     @GeneratedValue
     private int id;
 
-    private int idApprenant;
+    private int idApprenantRef;
     private int age;
 
-    public Enfant(int id, int idApprenant, int age) {
+    public Enfant(int id, int idApprenantRef, int age) {
         this.id = id;
-        this.idApprenant = idApprenant;
+        this.idApprenantRef = idApprenantRef;
         this.age = age;
     }
 
@@ -24,16 +24,20 @@ public class Enfant {
         return id;
     }
 
-    public int getIdApprenant() {
-        return idApprenant;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdApprenantRef() {
+        return idApprenantRef;
+    }
+
+    public void setIdApprenantRef(int idApprenantRef) {
+        this.idApprenantRef = idApprenantRef;
     }
 
     public int getAge() {
         return age;
-    }
-
-    public void setIdApprenant(int idApprenant) {
-        this.idApprenant = idApprenant;
     }
 
     public void setAge(int age) {
