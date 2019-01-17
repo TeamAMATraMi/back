@@ -9,34 +9,39 @@ public class Groupe {
 
     @Id
     @GeneratedValue
-    private int idGroupe;
+    private int id;
 
     private int idSite;
     private String nom;
 
-    public Groupe(int idGroupe, int idSite, String nom) {
-        this.idGroupe = idGroupe;
+    public Groupe(int id, int idSite, String nom) {
+        this.id = id;
         this.idSite = idSite;
         this.nom = nom;
     }
 
-    public int getIdGroupe() { return idGroupe; }
-    public int getIdSite() { return idSite; }
-    public String getNom() { return nom; }
+    public int getId() {
+        return id;
+    }
 
-    public void setIdGroupe(int idGroupe) {
-        this.idGroupe = idGroupe;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdSite() {
+        return idSite;
     }
 
     public void setIdSite(int idSite) {
         this.idSite = idSite;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
     public void setNom(String nom) {
         this.nom = nom;
     }
-
-
-
 }
 
