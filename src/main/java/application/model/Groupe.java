@@ -1,5 +1,6 @@
 package application.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,6 +12,7 @@ public class Groupe {
     @GeneratedValue
     private int id;
 
+    @Column(name = "idsite")
     private int idSite;
     private String nom;
 

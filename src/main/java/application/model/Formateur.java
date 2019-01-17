@@ -1,5 +1,6 @@
 package application.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,9 +12,12 @@ public class Formateur {
     @GeneratedValue
     private int id;
 
+    @Column(name = "idsite")
     private int idSite;
     private boolean salarie;
     private String nom, prenom, telephone, adresse, commune;
+
+    @Column(name = "codepostal")
     private int codePostal;
 
     public Formateur(int id, int idSite, boolean salarie, String nom, String prenom, String telephone, String adresse, String commune, int codePostal) {
