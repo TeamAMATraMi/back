@@ -44,7 +44,7 @@ public class Apprenant {
     private String dateArrivee; // a parser in/out
 
     @Column(name = "quartierprioritaire")
-    private int quartierPrioritaire; // clef étrangère
+    private Integer quartierPrioritaire; // clef étrangère
 
     @Column(name = "situationpersonnelle")
     private String situationPersonelle;
@@ -275,11 +275,11 @@ public class Apprenant {
         this.dateArrivee = dateArrivee;
     }
 
-    public int getQuartierPrioritaire() {
+    public Integer getQuartierPrioritaire() {
         return quartierPrioritaire;
     }
 
-    public void setQuartierPrioritaire(int quartierPrioritaire) {
+    public void setQuartierPrioritaire(Integer quartierPrioritaire) {
         this.quartierPrioritaire = quartierPrioritaire;
     }
 

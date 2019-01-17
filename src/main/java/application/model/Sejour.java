@@ -10,15 +10,16 @@ public class Sejour {
 
     @Id
     @GeneratedValue
-    private int id;
+    @Column(name ="idapprenant")
+    private int idApprenant;
 
-    private String status;
+    private String statut;
 
-    @Column(name = "datetitresejour")
-    private String dateTitreSejour;
+    @Column(name = "datecartesejour")
+    private String dateCarteSejour;
 
-    @Column(name = "datefintitresejour")
-    private String dateFinTitreSejour;
+    @Column(name = "datefincartesejour")
+    private String dateFinCarteSejour;
 
     @Column(name = "titresejour")
     private String titreSejour;
@@ -26,41 +27,45 @@ public class Sejour {
     @Column(name = "typecontrat")
     private String typeContrat;
 
-    public Sejour(int id, String status, String dateTitreSejour, String dateFinTitreSejour, String titreSejour, String typeContrat) {
-        this.id = id;
-        this.status = status;
-        this.dateTitreSejour = dateTitreSejour;
-        this.dateFinTitreSejour = dateFinTitreSejour;
+    public Sejour(int idApprenant, String statut, String dateCarteSejour, String dateFinCarteSejour, String titreSejour, String typeContrat) {
+        this.idApprenant = idApprenant;
+        this.statut = statut;
+        this.dateCarteSejour = dateCarteSejour;
+        this.dateFinCarteSejour = dateFinCarteSejour;
         this.titreSejour = titreSejour;
         this.typeContrat = typeContrat;
     }
 
-    public int getId() {
-        return id;
+    public int getIdApprenant() {
+        return idApprenant;
     }
 
-    public String getStatus() {
-        return status;
+    public void setIdApprenant(int idApprenant) {
+        this.idApprenant = idApprenant;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public String getStatut() {
+        return statut;
     }
 
-    public String getDateTitreSejour() {
-        return dateTitreSejour;
+    public void setStatut(String statut) {
+        this.statut = statut;
     }
 
-    public void setDateTitreSejour(String dateTitreSejour) {
-        this.dateTitreSejour = dateTitreSejour;
+    public String getDateCarteSejour() {
+        return dateCarteSejour;
     }
 
-    public String getDateFinTitreSejour() {
-        return dateFinTitreSejour;
+    public void setDateCarteSejour(String dateCarteSejour) {
+        this.dateCarteSejour = dateCarteSejour;
     }
 
-    public void setDateFinTitreSejour(String dateFinTitreSejour) {
-        this.dateFinTitreSejour = dateFinTitreSejour;
+    public String getDateFinCarteSejour() {
+        return dateFinCarteSejour;
+    }
+
+    public void setDateFinCarteSejour(String dateFinCarteSejour) {
+        this.dateFinCarteSejour = dateFinCarteSejour;
     }
 
     public String getTitreSejour() {
