@@ -41,6 +41,10 @@ public class Apprenant {
   private boolean cotisation_payee;
   private String remarques;
 
+  public Apprenant(){
+
+  }
+
   public Apprenant(
            int id,
            String nom,
