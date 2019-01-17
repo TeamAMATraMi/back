@@ -1,5 +1,6 @@
 package application.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,35 +12,72 @@ public class Apprenant {
     @GeneratedValue
     private int id;
 
-  private String nom;
-  private String prenom;
-  private String telephone;
-  private String adresse;
-  private String codePostal;
-  private String commune;
-  private int idGroupe;
-  private String dateInscription; // a parser in/out
-  private int auteurDossier;
-  private int majeur;
-  private String dateNaissance; // a parser in/out
-  private char genre;
-  private String paysOrigine;
-  private String nationalite;
-  private String dateArrivee; // a parser in/out
-  private int quartierPrioritaire; // clef étrangère
-  private String situationPersonelle;
-  private int priseCharge;
-  private boolean rsa;
-  private int tempsScolarisation;
-  private String diplome;
-  private boolean milieuScolaire;
-  private String niveauLangue;
-  private boolean lireLangue;
-  private boolean ecrireLangue;
-  private boolean lireAlphaLatin;
-  private boolean ecrireAlphaLatin;
-  private boolean cotisationPayee;
-  private String remarques;
+
+    private String nom;
+    private String prenom;
+    private String telephone;
+    private String adresse;
+
+    @Column(name = "codepostal")
+    private String codePostal;
+    private String commune;
+
+    @Column(name = "idgroupe")
+    private int idGroupe;
+
+    @Column(name = "dateinscription")
+    private String dateInscription; // a parser in/out
+
+    @Column(name = "auteurdossier")
+    private int auteurDossier;
+    private int majeur;
+
+    @Column(name = "datenaissance")
+    private String dateNaissance; // a parser in/out
+    private char genre;
+
+    @Column(name = "paysorigine")
+    private String paysOrigine;
+    private String nationalite;
+
+    @Column(name = "datearrivee")
+    private String dateArrivee; // a parser in/out
+
+    @Column(name = "quartierprioritaire")
+    private int quartierPrioritaire; // clef étrangère
+
+    @Column(name = "situationpersonnelle")
+    private String situationPersonelle;
+
+    @Column(name = "prisecharge")
+    private int priseCharge;
+    private boolean rsa;
+
+    @Column(name = "tempsscolarisation")
+    private int tempsScolarisation;
+    private String diplome;
+
+    @Column(name = "milieuscolaire")
+    private boolean milieuScolaire;
+
+    @Column(name = "niveaulangue")
+    private String niveauLangue;
+
+    @Column(name = "lirelangue")
+    private boolean lireLangue;
+
+    @Column(name = "ecrirelangue")
+    private boolean ecrireLangue;
+
+    @Column(name = "lirealphalatin")
+    private boolean lireAlphaLatin;
+
+    @Column(name = "ecrirealphalatin")
+    private boolean ecrireAlphaLatin;
+
+    @Column(name = "cotisationpayee")
+    private boolean cotisationPayee;
+    private String remarques;
 
   public Apprenant(){
 
