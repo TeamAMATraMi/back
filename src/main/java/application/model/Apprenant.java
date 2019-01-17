@@ -149,11 +149,11 @@ public class Apprenant {
         this.adresse = adresse;
     }
 
-    public String getCodePostal() {
+    public String getcodePostal() {
         return codePostal;
     }
 
-    public void setCodePostal(String codePostal) {
+    public void setcodePostal(String codePostal) {
         this.codePostal = codePostal;
     }
 

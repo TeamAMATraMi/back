@@ -1,5 +1,6 @@
 package application.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,6 +12,7 @@ public class Enfant {
     @GeneratedValue
     private int id;
 
+    @Column(name = "idapprenantref")
     private int idApprenantRef;
     private int age;
 

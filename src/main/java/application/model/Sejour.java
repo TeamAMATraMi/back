@@ -1,5 +1,6 @@
 package application.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,9 +13,17 @@ public class Sejour {
     private int id;
 
     private String status;
+
+    @Column(name = "datetitresejour")
     private String dateTitreSejour;
+
+    @Column(name = "datefintitresejour")
     private String dateFinTitreSejour;
+
+    @Column(name = "titresejour")
     private String titreSejour;
+
+    @Column(name = "typecontrat")
     private String typeContrat;
 
     public Sejour(int id, String status, String dateTitreSejour, String dateFinTitreSejour, String titreSejour, String typeContrat) {
