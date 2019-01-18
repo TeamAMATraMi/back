@@ -47,7 +47,7 @@ public class Apprenant {
     private Integer quartierPrioritaire; // clef étrangère
 
     @Column(name = "situationpersonnelle")
-    private String situationPersonelle;
+    private String situationPersonnelle;
 
     @Column(name = "prisecharge")
     private int priseCharge;
@@ -132,7 +132,7 @@ public class Apprenant {
       this.nationalite = nationalite;
       this.dateArrivee = dateArrivee;
       this.quartierPrioritaire = quartierPrioritaire;
-      this.situationPersonelle = situationPersonelle;
+      this.situationPersonnelle = situationPersonelle;
       this.priseCharge = priseCharge;
       this.rsa = rsa;
       this.tempsScolarisation = tempsScolarisation;
@@ -283,12 +283,12 @@ public class Apprenant {
         this.quartierPrioritaire = quartierPrioritaire;
     }
 
-    public String getSituationPersonelle() {
-        return situationPersonelle;
+    public String getSituationPersonnelle() {
+        return situationPersonnelle;
     }
 
     public void setSituationPersonelle(String situationPersonelle) {
-        this.situationPersonelle = situationPersonelle;
+        this.situationPersonnelle = situationPersonnelle;
     }
 
     public int getPriseCharge() {
