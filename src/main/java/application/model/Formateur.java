@@ -20,6 +20,10 @@ public class Formateur {
     @Column(name = "codepostal")
     private int codePostal;
 
+    public Formateur(){
+
+    }
+
     public Formateur(int id, int idSite, boolean salarie, String nom, String prenom, String telephone, String adresse, String commune, int codePostal) {
         this.id = id;
         this.idSite = idSite;
