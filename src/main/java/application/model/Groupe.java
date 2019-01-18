@@ -16,6 +16,9 @@ public class Groupe {
     private int idSite;
     private String nom;
 
+    public Groupe(){
+
+    }
     public Groupe(int id, int idSite, String nom) {
         this.id = id;
         this.idSite = idSite;
