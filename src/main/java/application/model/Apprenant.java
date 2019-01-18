@@ -12,7 +12,6 @@ public class Apprenant {
     @GeneratedValue
     private int id;
 
-
     private String nom;
     private String prenom;
     private String telephone;
@@ -30,7 +29,7 @@ public class Apprenant {
 
     @Column(name = "auteurdossier")
     private int auteurDossier;
-    private int majeur;
+    private boolean majeur;
 
     @Column(name = "datenaissance")
     private String dateNaissance; // a parser in/out
@@ -94,7 +93,7 @@ public class Apprenant {
            int idGroupe,
            String dateInscription,
            int auteurDossier,
-           int majeur,
+           boolean majeur,
            String dateNaissance,
            char genre,
            String paysOrigine,
@@ -227,11 +226,11 @@ public class Apprenant {
         this.auteurDossier = auteurDossier;
     }
 
-    public int getMajeur() {
+    public boolean getMajeur() {
         return majeur;
     }
 
-    public void setMajeur(int majeur) {
+    public void setMajeur(boolean majeur) {
         this.majeur = majeur;
     }
 
