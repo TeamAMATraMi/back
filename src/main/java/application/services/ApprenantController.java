@@ -25,8 +25,6 @@ public class ApprenantController {
 
     @GetMapping("/apprenantsG/{id}")
     public List<Apprenant> getApprenantsByGroupe(@PathVariable int id) {
-        System.out.println("CHOSE !");
-  //      System.out.println("LE NOOOOOOOOOOOM " + this.apprenantDAO.findByIdGroupe(id).iterator().next().getNom());
         return this.apprenantDAO.findByIdGroupe(id);
     }
 
