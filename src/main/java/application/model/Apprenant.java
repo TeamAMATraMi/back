@@ -12,9 +12,11 @@ public class Apprenant {
     @GeneratedValue
     private int id;
 
-
+    @Column(nullable = false)
     private String nom;
+    @Column(nullable = false)
     private String prenom;
+    @Column(nullable = false)
     private String telephone;
     private String adresse;
 
@@ -25,22 +27,23 @@ public class Apprenant {
     @Column(name = "idgroupe")
     private int idGroupe;
 
-    @Column(name = "dateinscription")
+    @Column(name = "dateinscription", nullable = false)
     private String dateInscription; // a parser in/out
 
-    @Column(name = "auteurdossier")
+    @Column(name = "auteurdossier", nullable = false)
     private int auteurDossier;
-    private int majeur;
+    private boolean majeur;
 
-    @Column(name = "datenaissance")
+    @Column(name = "datenaissance", nullable = false)
     private String dateNaissance; // a parser in/out
     private char genre;
 
-    @Column(name = "paysorigine")
+    @Column(name = "paysorigine", nullable = false)
     private String paysOrigine;
+    @Column(nullable = false)
     private String nationalite;
 
-    @Column(name = "datearrivee")
+    @Column(name = "datearrivee", nullable = false)
     private String dateArrivee; // a parser in/out
 
     @Column(name = "quartierprioritaire")
@@ -51,6 +54,7 @@ public class Apprenant {
 
     @Column(name = "prisecharge")
     private int priseCharge;
+
     private boolean rsa;
 
     @Column(name = "tempsscolarisation")
@@ -94,7 +98,7 @@ public class Apprenant {
            int idGroupe,
            String dateInscription,
            int auteurDossier,
-           int majeur,
+           boolean majeur,
            String dateNaissance,
            char genre,
            String paysOrigine,
@@ -227,11 +231,11 @@ public class Apprenant {
         this.auteurDossier = auteurDossier;
     }
 
-    public int getMajeur() {
+    public boolean getMajeur() {
         return majeur;
     }
 
-    public void setMajeur(int majeur) {
+    public void setMajeur(boolean majeur) {
         this.majeur = majeur;
     }
 
