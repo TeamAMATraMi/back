@@ -16,6 +16,9 @@ public class Enfant {
     private int idApprenantRef;
     private int age;
 
+    public Enfant() {
+    }
+
     public Enfant(int id, int idApprenantRef, int age) {
         this.id = id;
         this.idApprenantRef = idApprenantRef;

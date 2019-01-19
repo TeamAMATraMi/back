@@ -14,11 +14,14 @@ public class Groupe {
 
     @Column(name = "idsite")
     private int idSite;
+
+    @Column(nullable = false)
     private String nom;
 
-    public Groupe(){
+    public Groupe() {
 
     }
+
     public Groupe(int id, int idSite, String nom) {
         this.id = id;
         this.idSite = idSite;

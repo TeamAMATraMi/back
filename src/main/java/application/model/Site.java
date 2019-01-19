@@ -1,5 +1,6 @@
 package application.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,9 +12,11 @@ public class Site {
     @GeneratedValue
     private int id;
 
+    @Column(nullable = false)
     private String ville;
 
-    public Site() {}
+    public Site() {
+    }
 
     public Site(int id, String ville) {
         this.id = id;

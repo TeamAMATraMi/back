@@ -83,73 +83,73 @@ public class Apprenant {
     private boolean cotisationPayee;
     private String remarques;
 
-  public Apprenant(){
+    public Apprenant() {
 
-  }
+    }
 
-  public Apprenant(
-           int id,
-           String nom,
-           String prenom,
-           String telephone,
-           String adresse,
-           String codePostal,
-           String commune,
-           int idGroupe,
-           String dateInscription,
-           int auteurDossier,
-           boolean majeur,
-           String dateNaissance,
-           char genre,
-           String paysOrigine,
-           String nationalite,
-           String dateArrivee,
-           int quartierPrioritaire,
-           String situationPersonelle,
-           int priseCharge,
-           boolean rsa,
-           int tempsScolarisation,
-           String diplome,
-           boolean milieuScolaire,
-           String niveauLangue,
-           boolean lireLangue,
-           boolean ecrireLangue,
-           boolean lireAlphaLatin,
-           boolean ecrireAlphaLatin,
-           boolean cotisationPayee,
-           String remarques) {
+    public Apprenant(
+            int id,
+            String nom,
+            String prenom,
+            String telephone,
+            String adresse,
+            String codePostal,
+            String commune,
+            int idGroupe,
+            String dateInscription,
+            int auteurDossier,
+            boolean majeur,
+            String dateNaissance,
+            char genre,
+            String paysOrigine,
+            String nationalite,
+            String dateArrivee,
+            int quartierPrioritaire,
+            String situationPersonelle,
+            int priseCharge,
+            boolean rsa,
+            int tempsScolarisation,
+            String diplome,
+            boolean milieuScolaire,
+            String niveauLangue,
+            boolean lireLangue,
+            boolean ecrireLangue,
+            boolean lireAlphaLatin,
+            boolean ecrireAlphaLatin,
+            boolean cotisationPayee,
+            String remarques) {
 
-      this.id = id;
-      this.nom = nom;
-      this.prenom = prenom;
-      this.telephone = telephone;
-      this.adresse = adresse;
-      this.codePostal = codePostal;
-      this.commune = commune;
-      this.idGroupe = idGroupe;
-      this.dateInscription = dateInscription;
-      this.auteurDossier = auteurDossier;
-      this.majeur = majeur;
-      this.dateNaissance = dateNaissance;
-      this.genre = genre;
-      this.paysOrigine = paysOrigine;
-      this.nationalite = nationalite;
-      this.dateArrivee = dateArrivee;
-      this.quartierPrioritaire = quartierPrioritaire;
-      this.situationPersonnelle = situationPersonelle;
-      this.priseCharge = priseCharge;
-      this.rsa = rsa;
-      this.tempsScolarisation = tempsScolarisation;
-      this.diplome = diplome;
-      this.milieuScolaire = milieuScolaire;
-      this.niveauLangue = niveauLangue;
-      this.lireLangue = lireLangue;
-      this.ecrireLangue = ecrireLangue;
-      this.lireAlphaLatin = lireAlphaLatin;
-      this.ecrireAlphaLatin = ecrireAlphaLatin;
-      this.cotisationPayee = cotisationPayee;
-      this.remarques = remarques;
-  }
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.telephone = telephone;
+        this.adresse = adresse;
+        this.codePostal = codePostal;
+        this.commune = commune;
+        this.idGroupe = idGroupe;
+        this.dateInscription = dateInscription;
+        this.auteurDossier = auteurDossier;
+        this.majeur = majeur;
+        this.dateNaissance = dateNaissance;
+        this.genre = genre;
+        this.paysOrigine = paysOrigine;
+        this.nationalite = nationalite;
+        this.dateArrivee = dateArrivee;
+        this.quartierPrioritaire = quartierPrioritaire;
+        this.situationPersonnelle = situationPersonelle;
+        this.priseCharge = priseCharge;
+        this.rsa = rsa;
+        this.tempsScolarisation = tempsScolarisation;
+        this.diplome = diplome;
+        this.milieuScolaire = milieuScolaire;
+        this.niveauLangue = niveauLangue;
+        this.lireLangue = lireLangue;
+        this.ecrireLangue = ecrireLangue;
+        this.lireAlphaLatin = lireAlphaLatin;
+        this.ecrireAlphaLatin = ecrireAlphaLatin;
+        this.cotisationPayee = cotisationPayee;
+        this.remarques = remarques;
+    }
 
     public int getId() {
         return id;

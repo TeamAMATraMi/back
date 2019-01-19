@@ -10,7 +10,7 @@ public class Sejour {
 
     @Id
     @GeneratedValue
-    @Column(name ="idapprenant")
+    @Column(name = "idapprenant")
     private int idApprenant;
 
     private String statut;
