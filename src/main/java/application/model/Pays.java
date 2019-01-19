@@ -1,5 +1,6 @@
 package application.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,7 +12,12 @@ public class Pays {
     @GeneratedValue
     private int id;
 
-    private String nationalite, langue;
+    @Column(nullable = false)
+    private String nationalite;
+    private String langue;
+
+    public Pays() {
+    }
 
     public Pays(int id, String nationalite, String langue) {
         this.id = id;
@@ -27,12 +33,12 @@ public class Pays {
         return nationalite;
     }
 
-    public String getLangue() {
-        return langue;
-    }
-
     public void setNationalite(String nationalite) {
         this.nationalite = nationalite;
+    }
+
+    public String getLangue() {
+        return langue;
     }
 
     public void setLangue(String langue) {

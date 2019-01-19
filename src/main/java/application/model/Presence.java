@@ -30,12 +30,12 @@ public class Presence {
         return idApprenant;
     }
 
-    public boolean isPresent() {
-        return present;
-    }
-
     public void setIdApprenant(int idApprenant) {
         this.idApprenant = idApprenant;
+    }
+
+    public boolean isPresent() {
+        return present;
     }
 
     public void setPresent(boolean present) {
