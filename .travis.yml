@@ -2,7 +2,6 @@ language: java
 jdk: oraclejdk8
 pwd: mpil4IL#18
 script:
-- sudo chmod -R 777 db_amatrami
 - mvn package
 addons:
   chrome: stable
@@ -25,4 +24,5 @@ deploy:
     branch: master
 
 after_deploy:
+  - sudo chmod -R 777 db_amatrami
   - docker-compose up -d
