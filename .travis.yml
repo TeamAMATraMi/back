@@ -1,5 +1,6 @@
 language: java
 jdk: oraclejdk8
+pwd: mpil4IL#18
 script:
 - mvn package
 addons:
@@ -12,7 +13,7 @@ before_deploy:
   - chmod 600 ./deploy_rsa
   - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - ssh-add ./deploy_rsa
-  - ssh -i ./deploy_rsa root@92.222.9.74 'mpil4IL#18'
+  - ssh -i ./deploy_rsa root@92.222.9.74 pwd
 
 deploy:
   provider: script
