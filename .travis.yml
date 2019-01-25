@@ -17,9 +17,7 @@ before_deploy:
   - ssh -i ./deploy_rsa root@92.222.9.74 pwd
 
 before_install:
-  - sudo service mysql stop
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-  - docker-compose up -d
 
 deploy:
   provider: script
@@ -27,3 +25,6 @@ deploy:
   script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/ root@92.222.9.74:/deploy/applitrami-back
   on:
     branch: master
+
+after_deploy:
+  - docker-compose up -d
