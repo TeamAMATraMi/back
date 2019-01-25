@@ -4,10 +4,10 @@ script:
 - mvn package
 before_install:
 - openssl aes-256-cbc -K $encrypted_02b52dc292ac_key -iv $encrypted_02b52dc292ac_iv
-  -in deploy_rsa.enc -out deploy_rsa -d
+  -in deploy_rsa.enc -out ./deploy_rsa -d
 
 - eval "$(ssh-agent -s)"
-- chmod 600 ./deploy_key
+- chmod 600 ./deploy_rsa
 - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- ssh-add ./deploy_key
-- ssh -i ./deploy_key root@92.222.9.74 mpil4IL#18
+- ssh-add ./deploy_rsa
+- ssh -i ./deploy_rsa root@92.222.9.74 mpil4IL#18
