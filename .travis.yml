@@ -17,6 +17,7 @@ before_deploy:
 
 before_install:
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - docker-compose up -d
 
 deploy:
   provider: script
