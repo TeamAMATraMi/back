@@ -16,7 +16,7 @@ before_deploy:
   - ssh -i ./deploy_rsa root@92.222.9.74 pwd
 
 before_install:
-  - sudo systemctl stop mysql
+  - sudo service mysql stop
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
   - docker-compose up -d
 
