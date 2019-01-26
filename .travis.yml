@@ -23,5 +23,5 @@ deploy:
   script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/ root@92.222.9.74:/deploy/applitrami-back
   on:
     branch: master
-after_script:
-	- docker ps -a
+after_success:
+  - ssh root@92.222.9.74:/deploy/applitrami-back/scripts/launch.sh
