@@ -24,4 +24,4 @@ deploy:
   on:
     branch: master
 after_deploy:
-  - ssh -i ./deploy_rsa root@92.222.9.74 "sh /deploy/applitrami-back/scripts/launch.sh"
+  - ssh -i ./deploy_rsa root@92.222.9.74 "sh /deploy/applitrami-back/scripts/launch.sh &"
