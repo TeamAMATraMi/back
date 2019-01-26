@@ -1,6 +1,5 @@
 language: java
 jdk: oraclejdk8
-pwd: mpil4IL#18
 script:
 - mvn package
 - chmod +x ./scripts/launch.sh
