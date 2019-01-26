@@ -24,5 +24,4 @@ deploy:
     branch: master
 
 after_deploy:
-  - sudo chmod -R 777 db_amatrami
-  - docker-compose up -d
+  - java -jar target/gs-spring-boot-0.1.0.jar
