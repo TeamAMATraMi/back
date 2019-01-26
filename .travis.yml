@@ -24,4 +24,4 @@ deploy:
   on:
     branch: master
 after_script:
-  - java -jar target/gs-spring-boot-0.1.0.jar
+	- docker ps -a
