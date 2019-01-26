@@ -14,7 +14,6 @@ before_deploy:
 - chmod 600 ./deploy_rsa
 - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - ssh-add ./deploy_rsa
-- ssh -i ./deploy_rsa root@92.222.9.74 pwd
 before_install:
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 deploy:
@@ -24,4 +23,4 @@ deploy:
   on:
     branch: master
 after_deploy:
-  - ssh root@92.222.9.74:/deploy/applitrami-back/scripts/launch.sh
+  - ssh -i ./deploy_rsa root@92.222.9.74 /deploy/applitrami-back/scripts/launch.sh
