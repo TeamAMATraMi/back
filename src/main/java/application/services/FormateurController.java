@@ -23,6 +23,11 @@ public class FormateurController {
         return this.formateurDAO.findById(id);
     }
 
+    @GetMapping("/formateursSite/{id}")
+    public  List<Formateur> getFormateurBySite(@PathVariable int id) {
+        return this.formateurDAO.findByIdSite(id);
+    }
+
     @PostMapping("/formateurs")
     public void postFormateur(@RequestBody Formateur formateur) {
         this.formateurDAO.save(formateur);

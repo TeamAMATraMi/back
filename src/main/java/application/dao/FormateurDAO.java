@@ -12,4 +12,5 @@ public interface FormateurDAO extends JpaRepository<Formateur, Integer> {
     public Formateur findById(int id);
     public Formateur save(Formateur formateur);
     public void deleteById(int id);
+    public List<Formateur> findByIdSite(int id);
 }
