@@ -10,6 +10,7 @@ import java.util.List;
 public interface GroupeDAO extends JpaRepository<Groupe, Integer> {
     public List<Groupe> findAll();
     public Groupe findById(int id);
+    public List<Groupe> findByIdSite(int id);
     public Groupe save(Groupe groupe);
     public void deleteById(int id);
 }

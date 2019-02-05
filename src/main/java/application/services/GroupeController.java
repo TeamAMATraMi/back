@@ -37,4 +37,10 @@ public class GroupeController {
     public void deleteGroupe(@PathVariable int id) {
         this.groupeDAO.deleteById(id);
     }
+
+    @GetMapping("/groupesS/{id}")
+    public List<Groupe> getGroupesBySite(@PathVariable int id) {
+        return this.groupeDAO.findByIdSite(id);
+    }
+
 }
