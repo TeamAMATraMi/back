@@ -33,7 +33,7 @@ public class FormateurController {
         this.formateurDAO.save(formateur);
     }
 
-    @PutMapping("/formateurs")
+    @PutMapping("/formateurs/{id}")
     public Formateur updateFormateur(@RequestBody Formateur formateur) {
         return this.formateurDAO.save(formateur);
     }
