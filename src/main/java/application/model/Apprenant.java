@@ -31,7 +31,7 @@ public class Apprenant {
     private String dateInscription; // a parser in/out
 
     @Column(name = "auteurdossier", nullable = false)
-    private int auteurDossier;
+    private String auteurDossier;
     private boolean majeur;
 
     @Column(name = "datenaissance", nullable = false)
@@ -97,7 +97,7 @@ public class Apprenant {
             String commune,
             int idGroupe,
             String dateInscription,
-            int auteurDossier,
+            String auteurDossier,
             boolean majeur,
             String dateNaissance,
             char genre,
@@ -223,11 +223,11 @@ public class Apprenant {
         this.dateInscription = dateInscription;
     }
 
-    public int getAuteurDossier() {
+    public String getAuteurDossier() {
         return auteurDossier;
     }
 
-    public void setAuteurDossier(int auteurDossier) {
+    public void setAuteurDossier(String auteurDossier) {
         this.auteurDossier = auteurDossier;
     }
 
