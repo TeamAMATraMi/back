@@ -81,6 +81,21 @@ public class Apprenant {
     private boolean cotisationPayee;
     private String remarques;
 
+    @Column(name = "statutsejour")
+    private String statutSejour;
+
+    @Column(name = "datecartesejour")
+    private String dateCarteSejour;
+
+    @Column(name = "datefincartesejour")
+    private String dateFinCarteSejour;
+
+    @Column(name = "statutpro")
+    private String statutPro;
+
+    @Column(name = "typecontrat")
+    private String typeContrat;
+
     public Apprenant() {
 
     }
@@ -115,7 +130,12 @@ public class Apprenant {
             boolean lireAlphaLatin,
             boolean ecrireAlphaLatin,
             boolean cotisationPayee,
-            String remarques) {
+            String remarques,
+            String statutSejour,
+            String dateCarteSejour,
+            String dateFinCarteSejour,
+            String statutPro,
+            String typeContrat) {
 
         this.id = id;
         this.nom = nom;
@@ -147,6 +167,11 @@ public class Apprenant {
         this.ecrireAlphaLatin = ecrireAlphaLatin;
         this.cotisationPayee = cotisationPayee;
         this.remarques = remarques;
+        this.statutSejour = statutSejour;
+        this.dateCarteSejour = dateCarteSejour;
+        this.dateFinCarteSejour = dateFinCarteSejour;
+        this.statutPro = statutPro;
+        this.typeContrat = typeContrat;
     }
 
     public int getId() {
@@ -387,5 +412,45 @@ public class Apprenant {
 
     public void setRemarques(String remarques) {
         this.remarques = remarques;
+    }
+
+    public String getStatutSejour() {
+        return statutSejour;
+    }
+
+    public void setStatutSejour(String statutSejour) {
+        this.statutSejour = statutSejour;
+    }
+
+    public String getDateCarteSejour() {
+        return dateCarteSejour;
+    }
+
+    public void setDateCarteSejour(String dateCarteSejour) {
+        this.dateCarteSejour = dateCarteSejour;
+    }
+
+    public String getDateFinCarteSejour() {
+        return dateFinCarteSejour;
+    }
+
+    public void setDateFinCarteSejour(String dateFinCarteSejour) {
+        this.dateFinCarteSejour = dateFinCarteSejour;
+    }
+
+    public String getStatutPro() {
+        return statutPro;
+    }
+
+    public void setStatutPro(String statutPro) {
+        this.statutPro = statutPro;
+    }
+
+    public String getTypeContrat() {
+        return typeContrat;
+    }
+
+    public void setTypeContrat(String typeContrat) {
+        this.typeContrat = typeContrat;
     }
 }
