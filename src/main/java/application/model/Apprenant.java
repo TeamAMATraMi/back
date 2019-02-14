@@ -16,7 +16,6 @@ public class Apprenant {
     private String nom;
     @Column(nullable = false)
     private String prenom;
-    @Column(nullable = false)
     private String telephone;
     private String adresse;
 
@@ -27,23 +26,22 @@ public class Apprenant {
     @Column(name = "idgroupe")
     private int idGroupe;
 
-    @Column(name = "dateinscription", nullable = false)
+    @Column(name = "dateinscription")
     private String dateInscription; // a parser in/out
 
     @Column(name = "auteurdossier", nullable = false)
     private String auteurDossier;
     private boolean majeur;
 
-    @Column(name = "datenaissance", nullable = false)
+    @Column(name = "datenaissance")
     private String dateNaissance; // a parser in/out
     private char genre;
 
     @Column(name = "paysorigine", nullable = false)
     private String paysOrigine;
-    @Column(nullable = false)
     private String nationalite;
 
-    @Column(name = "datearrivee", nullable = false)
+    @Column(name = "datearrivee")
     private String dateArrivee; // a parser in/out
 
     @Column(name = "quartierprioritaire")
