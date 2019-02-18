@@ -13,6 +13,8 @@ public class Association {
 
     private String nom;
 
+    public Association() {}
+
     public Association(int id, String nom) {
         this.id = id;
         this.nom = nom;

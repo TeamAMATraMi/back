@@ -16,7 +16,6 @@ public class Apprenant {
     private String nom;
     @Column(nullable = false)
     private String prenom;
-    @Column(nullable = false)
     private String telephone;
     private String adresse;
 
@@ -27,23 +26,22 @@ public class Apprenant {
     @Column(name = "idgroupe")
     private int idGroupe;
 
-    @Column(name = "dateinscription", nullable = false)
+    @Column(name = "dateinscription")
     private String dateInscription; // a parser in/out
 
     @Column(name = "auteurdossier", nullable = false)
-    private int auteurDossier;
+    private String auteurDossier;
     private boolean majeur;
 
-    @Column(name = "datenaissance", nullable = false)
+    @Column(name = "datenaissance")
     private String dateNaissance; // a parser in/out
     private char genre;
 
     @Column(name = "paysorigine", nullable = false)
     private String paysOrigine;
-    @Column(nullable = false)
     private String nationalite;
 
-    @Column(name = "datearrivee", nullable = false)
+    @Column(name = "datearrivee")
     private String dateArrivee; // a parser in/out
 
     @Column(name = "quartierprioritaire")
@@ -83,6 +81,21 @@ public class Apprenant {
     private boolean cotisationPayee;
     private String remarques;
 
+    @Column(name = "statutsejour")
+    private String statutSejour;
+
+    @Column(name = "datecartesejour")
+    private String dateCarteSejour;
+
+    @Column(name = "datefincartesejour")
+    private String dateFinCarteSejour;
+
+    @Column(name = "statutpro")
+    private String statutPro;
+
+    @Column(name = "typecontrat")
+    private String typeContrat;
+
     public Apprenant() {
 
     }
@@ -97,7 +110,7 @@ public class Apprenant {
             String commune,
             int idGroupe,
             String dateInscription,
-            int auteurDossier,
+            String auteurDossier,
             boolean majeur,
             String dateNaissance,
             char genre,
@@ -117,7 +130,12 @@ public class Apprenant {
             boolean lireAlphaLatin,
             boolean ecrireAlphaLatin,
             boolean cotisationPayee,
-            String remarques) {
+            String remarques,
+            String statutSejour,
+            String dateCarteSejour,
+            String dateFinCarteSejour,
+            String statutPro,
+            String typeContrat) {
 
         this.id = id;
         this.nom = nom;
@@ -149,6 +167,11 @@ public class Apprenant {
         this.ecrireAlphaLatin = ecrireAlphaLatin;
         this.cotisationPayee = cotisationPayee;
         this.remarques = remarques;
+        this.statutSejour = statutSejour;
+        this.dateCarteSejour = dateCarteSejour;
+        this.dateFinCarteSejour = dateFinCarteSejour;
+        this.statutPro = statutPro;
+        this.typeContrat = typeContrat;
     }
 
     public int getId() {
@@ -223,11 +246,11 @@ public class Apprenant {
         this.dateInscription = dateInscription;
     }
 
-    public int getAuteurDossier() {
+    public String getAuteurDossier() {
         return auteurDossier;
     }
 
-    public void setAuteurDossier(int auteurDossier) {
+    public void setAuteurDossier(String auteurDossier) {
         this.auteurDossier = auteurDossier;
     }
 
@@ -389,5 +412,45 @@ public class Apprenant {
 
     public void setRemarques(String remarques) {
         this.remarques = remarques;
+    }
+
+    public String getStatutSejour() {
+        return statutSejour;
+    }
+
+    public void setStatutSejour(String statutSejour) {
+        this.statutSejour = statutSejour;
+    }
+
+    public String getDateCarteSejour() {
+        return dateCarteSejour;
+    }
+
+    public void setDateCarteSejour(String dateCarteSejour) {
+        this.dateCarteSejour = dateCarteSejour;
+    }
+
+    public String getDateFinCarteSejour() {
+        return dateFinCarteSejour;
+    }
+
+    public void setDateFinCarteSejour(String dateFinCarteSejour) {
+        this.dateFinCarteSejour = dateFinCarteSejour;
+    }
+
+    public String getStatutPro() {
+        return statutPro;
+    }
+
+    public void setStatutPro(String statutPro) {
+        this.statutPro = statutPro;
+    }
+
+    public String getTypeContrat() {
+        return typeContrat;
+    }
+
+    public void setTypeContrat(String typeContrat) {
+        this.typeContrat = typeContrat;
     }
 }

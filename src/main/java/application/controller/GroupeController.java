@@ -28,14 +28,14 @@ public class GroupeController {
         this.groupeDAO.save(groupe);
     }
 
-    @PutMapping("/groupes")
-    public Groupe updateGroupe(@RequestBody Groupe groupe) {
-        return this.groupeDAO.save(groupe);
-    }
-
     @DeleteMapping("/groupes/{id}")
     public void deleteGroupe(@PathVariable int id) {
         this.groupeDAO.deleteById(id);
+    }
+
+    @PutMapping("/groupes/{id}")
+    public Groupe updateGroupe(@RequestBody Groupe groupe) {
+        return this.groupeDAO.save(groupe);
     }
 
     @GetMapping("/groupesS/{id}")

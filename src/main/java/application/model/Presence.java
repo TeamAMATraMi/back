@@ -12,12 +12,16 @@ public class Presence {
     @GeneratedValue
     private int id;
 
+    @Column(name = "idcours")
+    private int idCours;
+
     @Column(name = "idapprenant")
     private int idApprenant;
     private boolean present;
 
-    public Presence(int id, int idApprenant, boolean present) {
+    public Presence(int id, int idCours, int idApprenant, boolean present) {
         this.id = id;
+        this.idCours = idCours;
         this.idApprenant = idApprenant;
         this.present = present;
     }
@@ -25,6 +29,10 @@ public class Presence {
     public int getId() {
         return id;
     }
+
+    public int getIdCours(){ return idCours; }
+
+    public void setIdCours(int idCours){ this.idCours = idCours; }
 
     public int getIdApprenant() {
         return idApprenant;

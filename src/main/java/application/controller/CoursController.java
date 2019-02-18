@@ -28,7 +28,7 @@ public class CoursController {
         this.coursDAO.save(cours);
     }
 
-    @PutMapping("/cours")
+    @PutMapping("/cours/{id}")
     public Cours updateCours(@RequestBody Cours cours) {
         return this.coursDAO.save(cours);
     }

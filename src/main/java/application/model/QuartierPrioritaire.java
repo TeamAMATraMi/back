@@ -15,6 +15,8 @@ public class QuartierPrioritaire {
 
     private String nom;
 
+    public QuartierPrioritaire() {}
+
     public QuartierPrioritaire(int id, String nom) {
         this.id = id;
         this.nom = nom;

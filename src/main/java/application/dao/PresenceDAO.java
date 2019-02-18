@@ -10,6 +10,7 @@ import java.util.List;
 public interface PresenceDAO extends JpaRepository<Presence, Integer> {
     public List<Presence> findAll();
     public Presence findById(int id);
-    public Presence save(Presence formateur);
+    public Presence save(Presence presence);
     public void deleteById(int id);
+    public List<Presence> findByIdCours(int id);
 }

@@ -37,4 +37,9 @@ public class PresenceController {
     public void deletePresence(@PathVariable int id) {
         this.presenceDAO.deleteById(id);
     }
+
+    @GetMapping("/presencesC/{id}")
+    public List<Presence> getPresencesByIdCours(@PathVariable int id) {
+        return this.presenceDAO.findByIdCours(id);
+    }
 }
