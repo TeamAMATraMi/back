@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 -- Contenu de la table `apprenant`
 --
 
-INSERT INTO `apprenant` (`id`, `nom`, `prenom`, `telephone`, `adresse`, `codepostal`, `commune`, `idgroupe`, `dateinscription`, `auteurdossier`, `majeur`, `datenaissance`, `genre`, `paysorigine`, `nationalite`, `datearrivee`, `quartierprioritaire`, `situationpersonnelle`, `prisecharge`, `rsa`, `tempsscolarisation`, `diplome`, `milieuscolaire`, `niveaulangue`, `lirelangue`, `ecrirelangue`, `lirealphalatin`, `ecrirealphalatin`, `cotisationpayee`, `remarques`) VALUES
+INSERT INTO `apprenant` (`id`, `username`, `prenom`, `telephone`, `adresse`, `codepostal`, `commune`, `idgroupe`, `dateinscription`, `auteurdossier`, `majeur`, `datenaissance`, `genre`, `paysorigine`, `nationalite`, `datearrivee`, `quartierprioritaire`, `situationpersonnelle`, `prisecharge`, `rsa`, `tempsscolarisation`, `diplome`, `milieuscolaire`, `niveaulangue`, `lirelangue`, `ecrirelangue`, `lirealphalatin`, `ecrirealphalatin`, `cotisationpayee`, `remarques`) VALUES
 (1234567, 'CENA', 'John', '+33656985698', '6, rue du ring', '55100', 'Verdun', 12345678, '2018-12-02', 123456, 1, '2000-12-02', 'M', 'FR', 'Français', '2018-12-02', 123, 'Celibataire', 1234, 0, 0, NULL, 0, 'A2', 1, 1, 1, 0, 1, NULL),
 (1765432, 'BOND', 'James', '+33600700715', '87, rue Aston Martin', '55700', 'Stenay', 81234567, '2018-12-02', 561234, 1, '1965-12-03', 'M', 'EN', 'Anglais', '2018-12-02', NULL, 'Celibataire', 3412, 1, 1, 'CAP', 0, 'A2', 1, 1, 1, 1, 0, NULL),
 (2176543, 'WAYNE', 'Bruce', '+33622115566', '98, boulevard du Batman', '55700', 'Baalon', 81234567, '2018-12-02', 612345, 1, '1978-02-03', 'M', 'AF', 'Afghan', '2018-12-02', 312, 'Celibataire', 3412, 0, 3, 'Bac', 0, 'A2', 1, 1, 0, 0, 1, NULL),
@@ -53,7 +53,7 @@ INSERT INTO `apprenant` (`id`, `nom`, `prenom`, `telephone`, `adresse`, `codepos
 -- Structure de la table `association`
 --
 
-INSERT INTO `association` (`id`, `nom`) VALUES
+INSERT INTO `association` (`id`, `username`) VALUES
 (1234, 'Verdun Trami'),
 (2341, 'BarLeDuc Trami'),
 (3412, 'Stenay Trami');
@@ -89,7 +89,7 @@ INSERT INTO `enfant` (`id`, `idapprenantref`, `age`) VALUES
 -- Contenu de la table `formateur`
 --
 
-INSERT INTO `formateur` (`id`, `idsite`, `salarie`, `nom`, `prenom`, `telephone`, `adresse`, `codepostal`, `commune`) VALUES
+INSERT INTO `formateur` (`id`, `idsite`, `salarie`, `username`, `prenom`, `telephone`, `adresse`, `codepostal`, `commune`) VALUES
 (123456, 12345, 1, 'DUPONT', 'Jean', '+33645896541', '6, rue du ruisseau', 55100, 'Verdun'),
 (234561, 12345, 0, 'SMITH', 'John', '+33645893321', '2, avenue du Cora', 55100, 'Verdun'),
 (345612, 23451, 1, 'GRAND', 'David', '+33645983265', '5, ruelle Chantoneau', 55000, 'Bar le Duc'),
@@ -107,7 +107,7 @@ INSERT INTO `formateur` (`id`, `idsite`, `salarie`, `nom`, `prenom`, `telephone`
 -- Contenu de la table `groupe`
 --
 
-INSERT INTO `groupe` (`id`, `idsite`, `nom`) VALUES
+INSERT INTO `groupe` (`id`, `idsite`, `username`) VALUES
 (1000, 12345, 'NouveauxArrivants'),
 (1001, 23451, 'NouveauxArrivants'),
 (1011, 34512, 'NouveauxArrivants'),
@@ -123,7 +123,7 @@ INSERT INTO `groupe` (`id`, `idsite`, `nom`) VALUES
 
 
 
-INSERT INTO `quartierprioritaire` (`id`, `nom`) VALUES
+INSERT INTO `quartierprioritaire` (`id`, `username`) VALUES
 (123, 'Verdun Prio'),
 (231, 'BarLeDuc Prio'),
 (312, 'Stenay Prio');

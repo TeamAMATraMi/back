@@ -1,4 +1,4 @@
-package application.services;
+package application.controller;
 
 import application.dao.PresenceDAO;
 import application.model.Presence;

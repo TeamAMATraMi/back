@@ -1,4 +1,4 @@
-package application.services;
+package application.controller;
 
 import application.dao.SiteDAO;
 import application.model.Site;

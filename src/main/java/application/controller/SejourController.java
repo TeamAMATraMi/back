@@ -1,4 +1,4 @@
-package application.services;
+package application.controller;
 
 import application.dao.SejourDAO;
 import application.model.Sejour;
