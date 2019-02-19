@@ -121,10 +121,10 @@ public class StatistiqueController {
                                 res.put(a.getStatutSejour(), 1);
                             }
                         } else {
-                            if (res.containsKey("autres")) {
-                                res.put("autres", res.get("autres") + 1);
+                            if (res.containsKey("autre")) {
+                                res.put("autre", res.get("autre") + 1);
                             } else {
-                                res.put("autres", 1);
+                                res.put("autre", 1);
                             }
                         }
                     }
@@ -151,10 +151,10 @@ public class StatistiqueController {
                                 res.put(this.quartierDAO.findById(a.getQuartierPrioritaire()).get().getNom(), 1);
                             }
                         } else {
-                            if (res.containsKey("autres")) {
-                                res.put("autres", res.get("autres") + 1);
+                            if (res.containsKey("autre")) {
+                                res.put("autre", res.get("autre") + 1);
                             } else {
-                                res.put("autres", 1);
+                                res.put("autre", 1);
                             }
                         }
                     }
@@ -164,5 +164,108 @@ public class StatistiqueController {
         return res;
     }
 
+    @GetMapping("/niveauScol/{nom}")
+    public Map<Integer, Integer> getByNiveauScol(@PathVariable String nom){
+        Map<Integer, Integer> res = new HashMap<>();
+        List<Apprenant> atmp = this.apprenantDAO.findAll();
+        List<Site> stmp = this.siteDAO.findAll();
+        List<Groupe> gtmp = this.groupeDAO.findAll();
+        for(Apprenant a : atmp) {
+            for (Site s : stmp) {
+                for (Groupe g : gtmp) {
+                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                        if (res.containsKey(a.getTempsScolarisation())) {
+                            res.put(a.getTempsScolarisation(), res.get(a.getTempsScolarisation()) + 1);
+                        } else {
+                            res.put(a.getTempsScolarisation(), 1);
+                        }
+                    }
+                }
+            }
+        }
+        return res;
+    }
+
+    @GetMapping("/statutPro/{nom}")
+    public Map<String, Integer> getByStatutPro(@PathVariable String nom){
+        Map<String, Integer> res = new HashMap<>();
+        List<Apprenant> atmp = this.apprenantDAO.findAll();
+        List<Site> stmp = this.siteDAO.findAll();
+        List<Groupe> gtmp = this.groupeDAO.findAll();
+        for(Apprenant a : atmp) {
+            for (Site s : stmp) {
+                for (Groupe g : gtmp) {
+                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                        if (a.getStatutPro() != null) {
+                            if (res.containsKey(this.quartierDAO.findById(a.getQuartierPrioritaire()).get().getNom())) {
+                                res.put(a.getStatutPro(), res.get(a.getStatutPro()) + 1);
+                            } else {
+                                res.put(a.getStatutPro(), 1);
+                            }
+                        } else {
+                            if (res.containsKey("autre")) {
+                                res.put("autre", res.get("autre") + 1);
+                            } else {
+                                res.put("autre", 1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return res;
+    }
+
+    @GetMapping("/priseCharge/{nom}")
+    public Map<Integer, Integer> getByPriseCharge(@PathVariable String nom){
+        Map<Integer, Integer> res = new HashMap<>();
+        List<Apprenant> atmp = this.apprenantDAO.findAll();
+        List<Site> stmp = this.siteDAO.findAll();
+        List<Groupe> gtmp = this.groupeDAO.findAll();
+        for(Apprenant a : atmp) {
+            for (Site s : stmp) {
+                for (Groupe g : gtmp) {
+                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                        if (res.containsKey(a.getPriseCharge())) {
+                            res.put(a.getPriseCharge(), res.get(a.getPriseCharge()) + 1);
+                        } else {
+                            res.put(a.getPriseCharge(), 1);
+                        }
+                    }
+                }
+            }
+        }
+        return res;
+    }
+
+    @GetMapping("/niveauLangue/{nom}")
+    public Map<String, Integer> getByNiveauLangue(@PathVariable String nom){
+        Map<String, Integer> res = new HashMap<>();
+        List<Apprenant> atmp = this.apprenantDAO.findAll();
+        List<Site> stmp = this.siteDAO.findAll();
+        List<Groupe> gtmp = this.groupeDAO.findAll();
+        for(Apprenant a : atmp) {
+            for (Site s : stmp) {
+                for (Groupe g : gtmp) {
+                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                        if (a.getNiveauLangue() != null) {
+                            if (res.containsKey(a.getNiveauLangue())) {
+                                res.put(a.getNiveauLangue(), res.get(a.getNiveauLangue()) + 1);
+                            } else {
+                                res.put(a.getNiveauLangue(), 1);
+                            }
+                        } else {
+                            if (res.containsKey("autre")) {
+                                res.put("autre", res.get("autre") + 1);
+                            } else {
+                                res.put("autre", 1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return res;
+    }
 
 }
