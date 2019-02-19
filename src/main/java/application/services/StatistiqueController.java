@@ -101,19 +101,24 @@ public class StatistiqueController {
         for(Apprenant a : atmp) {
             for (Site s : stmp) {
                 for (Groupe g : gtmp) {
-                    System.out.println("CCCCCCCCCCCCCCC : " + s.getVille() + "   " + nom);
                     if (s.getVille().equals(nom) && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
-                        if (res.containsKey(a.getStatutSejour())) {
-                            res.put(a.getStatutSejour(), res.get(a.getStatutSejour()) + 1);
-                            System.out.println("AAAAAAAAAAAAAAAAAAA");
+                        if(a.getStatutSejour() != null){
+                            if (res.containsKey(a.getStatutSejour())) {
+                                res.put(a.getStatutSejour(), res.get(a.getStatutSejour()) + 1);
+                            } else {
+                                res.put(a.getStatutSejour(), 1);
+                            }
                         } else {
-                            res.put(a.getStatutSejour(), 1);
+                            if (res.containsKey("autres")) {
+                                res.put("autres", res.get("autres") + 1);
+                            } else {
+                                res.put("autres", 1);
+                            }
                         }
                     }
                 }
             }
         }
-        System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
         return res;
     }
 
