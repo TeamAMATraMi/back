@@ -19,6 +19,10 @@ public class Presence {
     private int idApprenant;
     private boolean present;
 
+    public Presence(){
+
+    }
+
     public Presence(int id, int idCours, int idApprenant, boolean present) {
         this.id = id;
         this.idCours = idCours;
