@@ -2,10 +2,12 @@ package application.services;
 
 import application.dao.ApprenantDAO;
 import application.dao.GroupeDAO;
+import application.dao.QuartierPrioritaireDAO;
 import application.dao.SiteDAO;
 import application.model.Apprenant;
 import application.model.Groupe;
 import application.model.Site;
+import application.model.QuartierPrioritaire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +26,8 @@ public class StatistiqueController {
     private SiteDAO siteDAO;
     @Autowired
     private GroupeDAO groupeDAO;
+    @Autowired
+    private QuartierPrioritaireDAO quartierDAO;
 
     @GetMapping("/sexe")
     public Map<String, Integer> getBySexe() {
@@ -38,20 +42,6 @@ public class StatistiqueController {
         }
         res.put("F", cmpF);
         res.put("M", (tmp.size() - cmpF));
-        return res;
-    }
-
-    @GetMapping("/nationalite")
-    public Map<String, Integer> getByNationalite() {
-        Map<String, Integer> res = new HashMap<>();
-        List<Apprenant> tmp = this.apprenantDAO.findAll();
-        for(Apprenant a : tmp){
-            if(res.containsKey(a.getPaysOrigine())){
-                res.put(a.getPaysOrigine(), res.get(a.getPaysOrigine()) + 1);
-            }else{
-                res.put(a.getPaysOrigine(), 1);
-            }
-        }
         return res;
     }
 
@@ -92,6 +82,28 @@ public class StatistiqueController {
         return res;
     }
 
+    @GetMapping("/nationalite/{nom}")
+    public Map<String, Integer> getByNationalite(@PathVariable String nom) {
+        Map<String, Integer> res = new HashMap<>();
+        List<Apprenant> atmp = this.apprenantDAO.findAll();
+        List<Site> stmp = this.siteDAO.findAll();
+        List<Groupe> gtmp = this.groupeDAO.findAll();
+        for(Apprenant a : atmp){
+            for (Site s : stmp) {
+                for (Groupe g : gtmp) {
+                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                        if (res.containsKey(a.getPaysOrigine())) {
+                            res.put(a.getPaysOrigine(), res.get(a.getPaysOrigine()) + 1);
+                        } else {
+                            res.put(a.getPaysOrigine(), 1);
+                        }
+                    }
+                }
+            }
+        }
+        return res;
+    }
+
     @GetMapping("/titreSejour/{nom}")
     public Map<String, Integer> getByTitreSejour(@PathVariable String nom){
         Map<String, Integer> res = new HashMap<>();
@@ -101,12 +113,42 @@ public class StatistiqueController {
         for(Apprenant a : atmp) {
             for (Site s : stmp) {
                 for (Groupe g : gtmp) {
-                    if (s.getVille().equals(nom) && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
                         if(a.getStatutSejour() != null){
                             if (res.containsKey(a.getStatutSejour())) {
                                 res.put(a.getStatutSejour(), res.get(a.getStatutSejour()) + 1);
                             } else {
                                 res.put(a.getStatutSejour(), 1);
+                            }
+                        } else {
+                            if (res.containsKey("autres")) {
+                                res.put("autres", res.get("autres") + 1);
+                            } else {
+                                res.put("autres", 1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return res;
+    }
+
+    @GetMapping("/quartierPrio/{nom}")
+    public Map<String, Integer> getByQuartierPrio(@PathVariable String nom){
+        Map<String, Integer> res = new HashMap<>();
+        List<Apprenant> atmp = this.apprenantDAO.findAll();
+        List<Site> stmp = this.siteDAO.findAll();
+        List<Groupe> gtmp = this.groupeDAO.findAll();
+        for(Apprenant a : atmp) {
+            for (Site s : stmp) {
+                for (Groupe g : gtmp) {
+                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                        if(a.getQuartierPrioritaire() != null){
+                            if (res.containsKey(this.quartierDAO.findById(a.getQuartierPrioritaire()).get().getNom())) {
+                                res.put(this.quartierDAO.findById(a.getQuartierPrioritaire()).get().getNom(), res.get(this.quartierDAO.findById(a.getQuartierPrioritaire()).get().getNom()) + 1);
+                            } else {
+                                res.put(this.quartierDAO.findById(a.getQuartierPrioritaire()).get().getNom(), 1);
                             }
                         } else {
                             if (res.containsKey("autres")) {
