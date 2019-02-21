@@ -16,7 +16,7 @@ public class StatistiqueController {
     @Autowired
     private ApprenantDAO apprenantDAO;
 
-    @GetMapping("/sexe")
+    @GetMapping("/api/sexe")
     public Map<String, Integer> getBySexe() {
         Map<String, Integer> res = new HashMap<>();
         int cmpF = 0;
@@ -32,7 +32,7 @@ public class StatistiqueController {
         return res;
     }
 
-    @GetMapping("/nationalite")
+    @GetMapping("/api/nationalite")
     public Map<String, Integer> getByNationalite() {
         Map<String, Integer> res = new HashMap<>();
         List<Apprenant> tmp = this.apprenantDAO.findAll();
@@ -46,7 +46,7 @@ public class StatistiqueController {
         return res;
     }
 
-    @GetMapping("/age")
+    @GetMapping("/api/age")
     public Map<String, Integer> getByAge() {
         Map<String, Integer> res = new HashMap<>();
         List<Apprenant> tmp = this.apprenantDAO.findAll();

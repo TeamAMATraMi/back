@@ -9,16 +9,26 @@ public class Utilisateur {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     private String username;
     private String password;
 
-    public int getId() {
+    public String getToken() {
+        return Token;
+    }
+
+    public void setToken(String token) {
+        Token = token;
+    }
+
+    private String Token;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

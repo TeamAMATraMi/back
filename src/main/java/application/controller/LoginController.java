@@ -12,7 +12,7 @@ import java.util.Date;
 @CrossOrigin
 public class LoginController {
 
-    @RequestMapping("/login")
+    @RequestMapping("/testlogin")
     public String login(@RequestBody Utilisateur user){
 
         String jwtToken = "";
@@ -28,9 +28,13 @@ public class LoginController {
         if(!user.getPassword().equals("password")) {
             throw new SecurityException("Invalid password");
         }
+        /*
 
-        jwtToken = Jwts.builder().setSubject(user.getUsername()).claim("roles", "user").setIssuedAt(new Date())
+        jwtToken = Jwts.builder().setSubject(user.getUsername())
+                .claim("roles", "user")
+                .setIssuedAt(new Date())
                 .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
+                */
 
         return  jwtToken;
     }

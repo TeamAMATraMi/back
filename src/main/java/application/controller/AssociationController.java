@@ -13,27 +13,27 @@ public class AssociationController {
     @Autowired
     private AssociationDAO associationDAO;
 
-    @GetMapping("/associations")
+    @GetMapping("/api/associations")
     public List<Association> getAssociations() {
         return this.associationDAO.findAll();
     }
 
-    @GetMapping("/associations/{id}")
+    @GetMapping("/api/associations/{id}")
     public Association getAssociationById(@PathVariable int id) {
         return this.associationDAO.findById(id);
     }
 
-    @PostMapping("/associations")
+    @PostMapping("/api/associations")
     public void postAssociation(@RequestBody Association association) {
         this.associationDAO.save(association);
     }
 
-    @PutMapping("/associations")
+    @PutMapping("/api/associations")
     public Association updateAssociation(@RequestBody Association association) {
         return this.associationDAO.save(association);
     }
 
-    @DeleteMapping("/associations/{id}")
+    @DeleteMapping("/api/associations/{id}")
     public void deleteAssociation(@PathVariable int id) {
         this.associationDAO.deleteById(id);
     }

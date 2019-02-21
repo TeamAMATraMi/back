@@ -13,32 +13,32 @@ public class PresenceController {
     @Autowired
     private PresenceDAO presenceDAO;
 
-    @GetMapping("/presences")
+    @GetMapping("/api/presences")
     public List<Presence> getPresences() {
         return this.presenceDAO.findAll();
     }
 
-    @GetMapping("/presences/{id}")
+    @GetMapping("/api/presences/{id}")
     public Presence getPresenceById(@PathVariable int id) {
         return this.presenceDAO.findById(id);
     }
 
-    @PostMapping("/presences")
+    @PostMapping("/api/presences")
     public void postPresence(@RequestBody Presence presence) {
         this.presenceDAO.save(presence);
     }
 
-    @PutMapping("/presences")
+    @PutMapping("/api/presences")
     public Presence updatePresence(@RequestBody Presence presence) {
         return this.presenceDAO.save(presence);
     }
 
-    @DeleteMapping("/presences/{id}")
+    @DeleteMapping("/api/presences/{id}")
     public void deletePresence(@PathVariable int id) {
         this.presenceDAO.deleteById(id);
     }
 
-    @GetMapping("/presencesC/{id}")
+    @GetMapping("/api/presencesC/{id}")
     public List<Presence> getPresencesByIdCours(@PathVariable int id) {
         return this.presenceDAO.findByIdCours(id);
     }

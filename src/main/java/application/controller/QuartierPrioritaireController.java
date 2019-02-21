@@ -13,27 +13,27 @@ public class QuartierPrioritaireController {
     @Autowired
     private QuartierPrioritaireDAO quartierPrioritaireDAO;
 
-    @GetMapping("/quartiers")
+    @GetMapping("/api/quartiers")
     public List<QuartierPrioritaire> getQuartiers() {
         return this.quartierPrioritaireDAO.findAll();
     }
 
-    @GetMapping("/quartiers/{id}")
+    @GetMapping("/api/quartiers/{id}")
     public QuartierPrioritaire getQuartierById(@PathVariable int id) {
         return this.quartierPrioritaireDAO.findById(id);
     }
 
-    @PostMapping("/quartiers")
+    @PostMapping("/api/quartiers")
     public void postQuartier(@RequestBody QuartierPrioritaire quartierPrioritaire) {
         this.quartierPrioritaireDAO.save(quartierPrioritaire);
     }
 
-    @PutMapping("/quartiers")
+    @PutMapping("/api/quartiers")
     public QuartierPrioritaire updateQuartier(@RequestBody QuartierPrioritaire quartierPrioritaire) {
         return this.quartierPrioritaireDAO.save(quartierPrioritaire);
     }
 
-    @DeleteMapping("/quartiers/{id}")
+    @DeleteMapping("/api/quartiers/{id}")
     public void deleteQuartier(@PathVariable int id) {
         this.quartierPrioritaireDAO.deleteById(id);
     }

@@ -13,32 +13,32 @@ public class FormateurController {
     @Autowired
     private FormateurDAO formateurDAO;
 
-    @GetMapping("/formateurs")
+    @GetMapping("/api/formateurs")
     public List<Formateur> getFormateurs() {
         return this.formateurDAO.findAll();
     }
 
-    @GetMapping("/formateurs/{id}")
+    @GetMapping("/api/formateurs/{id}")
     public Formateur getFormateurById(@PathVariable int id) {
         return this.formateurDAO.findById(id);
     }
 
-    @GetMapping("/formateursSite/{id}")
+    @GetMapping("/api/formateursSite/{id}")
     public  List<Formateur> getFormateurBySite(@PathVariable int id) {
         return this.formateurDAO.findByIdSite(id);
     }
 
-    @PostMapping("/formateurs")
+    @PostMapping("/api/formateurs")
     public void postFormateur(@RequestBody Formateur formateur) {
         this.formateurDAO.save(formateur);
     }
 
-    @PutMapping("/formateurs/{id}")
+    @PutMapping("/api/formateurs/{id}")
     public Formateur updateFormateur(@RequestBody Formateur formateur) {
         return this.formateurDAO.save(formateur);
     }
 
-    @DeleteMapping("/formateurs/{id}")
+    @DeleteMapping("/api/formateurs/{id}")
     public void deleteFormateur(@PathVariable int id) {
         this.formateurDAO.deleteById(id);
     }

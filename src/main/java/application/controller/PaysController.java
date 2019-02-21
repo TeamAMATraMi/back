@@ -13,27 +13,27 @@ public class PaysController {
     @Autowired
     private PaysDAO paysDAO;
 
-    @GetMapping("/pays")
+    @GetMapping("/api/pays")
     public List<Pays> getPays() {
         return this.paysDAO.findAll();
     }
 
-    @GetMapping("/pays/{id}")
+    @GetMapping("/api/pays/{id}")
     public Pays getPaysById(@PathVariable int id) {
         return this.paysDAO.findById(id);
     }
 
-    @PostMapping("/pays")
+    @PostMapping("/api/pays")
     public void postPays(@RequestBody Pays pays) {
         this.paysDAO.save(pays);
     }
 
-    @PutMapping("/pays")
+    @PutMapping("/api/pays")
     public Pays updatePays(@RequestBody Pays pays) {
         return this.paysDAO.save(pays);
     }
 
-    @DeleteMapping("/pays/{id}")
+    @DeleteMapping("/api/pays/{id}")
     public void deletePays(@PathVariable int id) {
         this.paysDAO.deleteById(id);
     }
