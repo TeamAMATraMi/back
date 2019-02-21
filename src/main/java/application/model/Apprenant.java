@@ -26,7 +26,7 @@ public class Apprenant {
     @Column(name = "idgroupe")
     private int idGroupe;
 
-    @Column(name = "dateinscription")
+    @Column(name = "dateinscription",nullable = false)
     private String dateInscription; // a parser in/out
 
     @Column(name = "auteurdossier", nullable = false)
