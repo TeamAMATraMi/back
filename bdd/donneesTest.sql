@@ -68,6 +68,15 @@ INSERT INTO `association` (`id`, `username`) VALUES
 -- Structure de la table `cours`
 --
 
+--
+-- Contenu de la table `cours`
+--
+
+INSERT INTO `cours` (`id`, `duree`, `horaire`, `idformateur`, `idgroupe`, `matiere`) VALUES
+(1234567, 3, 08, 123456, 45678123, 'AAA'),
+(2345671, 3, 08, 123456, 45678123, 'BBB'),
+(3456712, 3, 08, 123456, 45678123, 'CCC');
+
 -- --------------------------------------------------------
 
 --
@@ -93,7 +102,7 @@ INSERT INTO `enfant` (`id`, `idapprenantref`, `age`) VALUES
 -- Contenu de la table `formateur`
 --
 
-INSERT INTO `formateur` (`id`, `idsite`, `salarie`, `username`, `prenom`, `telephone`, `adresse`, `codepostal`, `commune`) VALUES
+INSERT INTO `formateur` (`id`, `idsite`, `salarie`, `nom`,`prenom`, `telephone`, `adresse`, `codepostal`, `commune`) VALUES
 (123456, 12345, 1, 'DUPONT', 'Jean', '+33645896541', '6, rue du ruisseau', 55100, 'Verdun'),
 (234561, 12345, 0, 'SMITH', 'John', '+33645893321', '2, avenue du Cora', 55100, 'Verdun'),
 (345612, 23451, 1, 'GRAND', 'David', '+33645983265', '5, ruelle Chantoneau', 55000, 'Bar le Duc'),
@@ -111,7 +120,7 @@ INSERT INTO `formateur` (`id`, `idsite`, `salarie`, `username`, `prenom`, `telep
 -- Contenu de la table `groupe`
 --
 
-INSERT INTO `groupe` (`id`, `idsite`, `username`) VALUES
+INSERT INTO `groupe` (`id`, `idsite`, `nom`) VALUES
 (1000, 12345, 'NouveauxArrivants'),
 (1001, 23451, 'NouveauxArrivants'),
 (1011, 34512, 'NouveauxArrivants'),
@@ -148,6 +157,20 @@ INSERT INTO `site` (`id`, `ville`) VALUES
 (12345, 'Verdun'),
 (23451, 'Bar le Duc'),
 (34512, 'Stenay');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `presence`
+--
+
+--
+-- Contenu de la table `presence`
+--
+
+INSERT INTO `presence` (`id`, `idapprenant`, `idcours`, `present`,`date`) VALUES
+(12345, '6712345', 1234567, 0, '2019-12-02'),
+(23451, '7123456', 1234567, 0, '2019-12-02');
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

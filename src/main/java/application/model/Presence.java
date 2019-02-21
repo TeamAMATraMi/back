@@ -34,29 +34,19 @@ public class Presence {
         this.date = date;
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
     public int getIdCours(){ return idCours; }
 
     public void setIdCours(int idCours){ this.idCours = idCours; }
 
-    public int getIdApprenant() {
-        return idApprenant;
-    }
+    public int getIdApprenant() { return idApprenant; }
 
-    public void setIdApprenant(int idApprenant) {
-        this.idApprenant = idApprenant;
-    }
+    public void setIdApprenant(int idApprenant) { this.idApprenant = idApprenant; }
 
-    public boolean isPresent() {
-        return present;
-    }
+    public boolean isPresent() { return present; }
 
-    public void setPresent(boolean present) {
-        this.present = present;
-    }
+    public void setPresent(boolean present) { this.present = present; }
 
     public int getDate() { return date; }
 
