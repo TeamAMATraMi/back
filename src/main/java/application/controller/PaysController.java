@@ -8,32 +8,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class PaysController {
 
     @Autowired
     private PaysDAO paysDAO;
 
-    @GetMapping("/api/pays")
+    @GetMapping("/pays")
     public List<Pays> getPays() {
         return this.paysDAO.findAll();
     }
 
-    @GetMapping("/api/pays/{id}")
+    @GetMapping("/pays/{id}")
     public Pays getPaysById(@PathVariable int id) {
         return this.paysDAO.findById(id);
     }
 
-    @PostMapping("/api/pays")
+    @PostMapping("/pays")
     public void postPays(@RequestBody Pays pays) {
         this.paysDAO.save(pays);
     }
 
-    @PutMapping("/api/pays")
+    @PutMapping("/pays")
     public Pays updatePays(@RequestBody Pays pays) {
         return this.paysDAO.save(pays);
     }
 
-    @DeleteMapping("/api/pays/{id}")
+    @DeleteMapping("/pays/{id}")
     public void deletePays(@PathVariable int id) {
         this.paysDAO.deleteById(id);
     }

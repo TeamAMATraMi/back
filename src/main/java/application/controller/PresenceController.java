@@ -8,37 +8,38 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class PresenceController {
 
     @Autowired
     private PresenceDAO presenceDAO;
 
-    @GetMapping("/api/presences")
+    @GetMapping("/presences")
     public List<Presence> getPresences() {
         return this.presenceDAO.findAll();
     }
 
-    @GetMapping("/api/presences/{id}")
+    @GetMapping("/presences/{id}")
     public Presence getPresenceById(@PathVariable int id) {
         return this.presenceDAO.findById(id);
     }
 
-    @PostMapping("/api/presences")
+    @PostMapping("/presences")
     public void postPresence(@RequestBody Presence presence) {
         this.presenceDAO.save(presence);
     }
 
-    @PutMapping("/api/presences")
+    @PutMapping("/presences")
     public Presence updatePresence(@RequestBody Presence presence) {
         return this.presenceDAO.save(presence);
     }
 
-    @DeleteMapping("/api/presences/{id}")
+    @DeleteMapping("/presences/{id}")
     public void deletePresence(@PathVariable int id) {
         this.presenceDAO.deleteById(id);
     }
 
-    @GetMapping("/api/presencesC/{id}")
+    @GetMapping("/presencesC/{id}")
     public List<Presence> getPresencesByIdCours(@PathVariable int id) {
         return this.presenceDAO.findByIdCours(id);
     }

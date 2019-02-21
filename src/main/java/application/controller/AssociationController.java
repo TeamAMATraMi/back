@@ -8,32 +8,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class AssociationController {
 
     @Autowired
     private AssociationDAO associationDAO;
 
-    @GetMapping("/api/associations")
+    @GetMapping("/associations")
     public List<Association> getAssociations() {
         return this.associationDAO.findAll();
     }
 
-    @GetMapping("/api/associations/{id}")
+    @GetMapping("/associations/{id}")
     public Association getAssociationById(@PathVariable int id) {
         return this.associationDAO.findById(id);
     }
 
-    @PostMapping("/api/associations")
+    @PostMapping("/associations")
     public void postAssociation(@RequestBody Association association) {
         this.associationDAO.save(association);
     }
 
-    @PutMapping("/api/associations")
+    @PutMapping("/associations")
     public Association updateAssociation(@RequestBody Association association) {
         return this.associationDAO.save(association);
     }
 
-    @DeleteMapping("/api/associations/{id}")
+    @DeleteMapping("/associations/{id}")
     public void deleteAssociation(@PathVariable int id) {
         this.associationDAO.deleteById(id);
     }

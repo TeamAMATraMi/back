@@ -1,9 +1,10 @@
-package application.services;
+package application.controller;
 
 import application.dao.ApprenantDAO;
 import application.model.Apprenant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -11,12 +12,14 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/api")
+
 public class StatistiqueController {
 
     @Autowired
     private ApprenantDAO apprenantDAO;
 
-    @GetMapping("/api/sexe")
+    @GetMapping("/sexe")
     public Map<String, Integer> getBySexe() {
         Map<String, Integer> res = new HashMap<>();
         int cmpF = 0;
@@ -32,7 +35,7 @@ public class StatistiqueController {
         return res;
     }
 
-    @GetMapping("/api/nationalite")
+    @GetMapping("/nationalite")
     public Map<String, Integer> getByNationalite() {
         Map<String, Integer> res = new HashMap<>();
         List<Apprenant> tmp = this.apprenantDAO.findAll();
@@ -46,7 +49,7 @@ public class StatistiqueController {
         return res;
     }
 
-    @GetMapping("/api/age")
+    @GetMapping("/age")
     public Map<String, Integer> getByAge() {
         Map<String, Integer> res = new HashMap<>();
         List<Apprenant> tmp = this.apprenantDAO.findAll();

@@ -8,32 +8,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class EnfantController {
 
     @Autowired
     private EnfantDAO enfantDAO;
 
-    @GetMapping("/api/enfants")
+    @GetMapping("/enfants")
     public List<Enfant> getEnfants() {
         return this.enfantDAO.findAll();
     }
 
-    @GetMapping("/api/enfants/{id}")
+    @GetMapping("/enfants/{id}")
     public Enfant getEnfantById(@PathVariable int id) {
         return this.enfantDAO.findById(id);
     }
 
-    @PostMapping("/api/enfants")
+    @PostMapping("/enfants")
     public void postEnfant(@RequestBody Enfant enfant) {
         this.enfantDAO.save(enfant);
     }
 
-    @PutMapping("/api/enfants")
+    @PutMapping("/enfants")
     public Enfant updateEnfant(@RequestBody Enfant enfant) {
         return this.enfantDAO.save(enfant);
     }
 
-    @DeleteMapping("/api/enfants/{id}")
+    @DeleteMapping("/enfants/{id}")
     public void deleteEnfant(@PathVariable int id) {
         this.enfantDAO.deleteById(id);
     }

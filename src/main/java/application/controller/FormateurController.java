@@ -8,37 +8,38 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class FormateurController {
 
     @Autowired
     private FormateurDAO formateurDAO;
 
-    @GetMapping("/api/formateurs")
+    @GetMapping("/formateurs")
     public List<Formateur> getFormateurs() {
         return this.formateurDAO.findAll();
     }
 
-    @GetMapping("/api/formateurs/{id}")
+    @GetMapping("/formateurs/{id}")
     public Formateur getFormateurById(@PathVariable int id) {
         return this.formateurDAO.findById(id);
     }
 
-    @GetMapping("/api/formateursSite/{id}")
+    @GetMapping("/formateursSite/{id}")
     public  List<Formateur> getFormateurBySite(@PathVariable int id) {
         return this.formateurDAO.findByIdSite(id);
     }
 
-    @PostMapping("/api/formateurs")
+    @PostMapping("/formateurs")
     public void postFormateur(@RequestBody Formateur formateur) {
         this.formateurDAO.save(formateur);
     }
 
-    @PutMapping("/api/formateurs/{id}")
+    @PutMapping("/formateurs/{id}")
     public Formateur updateFormateur(@RequestBody Formateur formateur) {
         return this.formateurDAO.save(formateur);
     }
 
-    @DeleteMapping("/api/formateurs/{id}")
+    @DeleteMapping("/formateurs/{id}")
     public void deleteFormateur(@PathVariable int id) {
         this.formateurDAO.deleteById(id);
     }
