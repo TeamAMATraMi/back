@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `apprenant` (
   `id_apprenant` int(11) NOT NULL,
-  `nom` varchar(50) DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
   `prenom` varchar(50) DEFAULT NULL,
   `telephone` varchar(20) DEFAULT NULL,
   `adresse` varchar(100) DEFAULT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE `apprenant` (
 
 CREATE TABLE `association` (
   `id_association` int(11) NOT NULL,
-  `nom` varchar(50) NOT NULL
+  `username` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -109,7 +109,7 @@ CREATE TABLE `formateur` (
   `id_formateur` int(11) NOT NULL,
   `id_site` int(11) NOT NULL,
   `salarie` tinyint(1) NOT NULL DEFAULT 0,
-  `nom` varchar(50) DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
   `prenom` varchar(50) DEFAULT NULL,
   `telephone` varchar(20) DEFAULT NULL,
   `adresse` varchar(100) DEFAULT NULL,
@@ -126,7 +126,7 @@ CREATE TABLE `formateur` (
 CREATE TABLE `groupe` (
   `id_groupe` int(11) NOT NULL,
   `id_site` int(11) NOT NULL,
-  `nom` varchar(50) DEFAULT NULL
+  `username` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

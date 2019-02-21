@@ -1,4 +1,4 @@
-package application.services;
+package application.controller;
 
 import application.dao.ApprenantDAO;
 import application.model.Apprenant;
@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class ApprenantController {
 
     @Autowired

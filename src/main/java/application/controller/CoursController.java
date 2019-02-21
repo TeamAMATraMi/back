@@ -1,4 +1,4 @@
-package application.services;
+package application.controller;
 
 import application.dao.CoursDAO;
 import application.model.Cours;
@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class CoursController {
 
     @Autowired
