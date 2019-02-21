@@ -19,15 +19,19 @@ public class Presence {
     private int idApprenant;
     private boolean present;
 
+    @Column(name = "date")
+    private int date;
+
     public Presence(){
 
     }
 
-    public Presence(int id, int idCours, int idApprenant, boolean present) {
+    public Presence(int id, int idCours, int idApprenant, boolean present, int date) {
         this.id = id;
         this.idCours = idCours;
         this.idApprenant = idApprenant;
         this.present = present;
+        this.date = date;
     }
 
     public int getId() {
@@ -53,4 +57,8 @@ public class Presence {
     public void setPresent(boolean present) {
         this.present = present;
     }
+
+    public int getDate() { return date; }
+
+    public void setDate(int date) { this.date = date; }
 }

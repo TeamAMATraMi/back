@@ -42,4 +42,9 @@ public class PresenceController {
     public List<Presence> getPresencesByIdCours(@PathVariable int id) {
         return this.presenceDAO.findByIdCours(id);
     }
+
+    @GetMapping("/presencesD/{id}")
+    public List<Presence> getPresencesByDate(@PathVariable int id) {
+        return this.presenceDAO.findByDate(id);
+    }
 }

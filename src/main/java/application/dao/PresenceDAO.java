@@ -13,4 +13,5 @@ public interface PresenceDAO extends JpaRepository<Presence, Integer> {
     public Presence save(Presence presence);
     public void deleteById(int id);
     public List<Presence> findByIdCours(int id);
+    public List<Presence> findByDate(int id);
 }
