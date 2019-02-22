@@ -57,7 +57,7 @@ INSERT INTO `apprenant` (`id`, `nom`, `prenom`, `telephone`, `adresse`, `codepos
 -- Structure de la table `association`
 --
 
-INSERT INTO `association` (`id`, `username`) VALUES
+INSERT INTO `association` (`id`, `nom`) VALUES
 (1234, 'Verdun Trami'),
 (2341, 'BarLeDuc Trami'),
 (3412, 'Stenay Trami');
@@ -136,7 +136,7 @@ INSERT INTO `groupe` (`id`, `idsite`, `nom`) VALUES
 
 
 
-INSERT INTO `quartierprioritaire` (`id`, `username`) VALUES
+INSERT INTO `quartierprioritaire` (`id`, `nom`) VALUES
 (123, 'Verdun Prio'),
 (231, 'BarLeDuc Prio'),
 (312, 'Stenay Prio');
@@ -168,9 +168,9 @@ INSERT INTO `site` (`id`, `ville`) VALUES
 -- Contenu de la table `presence`
 --
 
-INSERT INTO `presence` (`id`, `idapprenant`, `idcours`, `present`,`date`) VALUES
-(12345, '6712345', 1234567, 0, '2019-12-02'),
-(23451, '7123456', 1234567, 0, '2019-12-02');
+INSERT INTO `presence` (`id`, `date`, `idapprenant`, `idcours`, `present`) VALUES
+(12345,'2019-12-02', 6712345, 1234567, 0),
+(23451,'2019-12-02', 7123456, 1234567, 0);
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
