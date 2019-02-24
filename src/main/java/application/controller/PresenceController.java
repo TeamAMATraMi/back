@@ -48,4 +48,12 @@ public class PresenceController {
     public List<Presence> getPresencesByDate(@PathVariable int id) {
         return this.presenceDAO.findByDate(id);
     }
+
+    @PutMapping("/presencesF")
+    public void putFichePresence(@RequestBody List<Presence> presences) {
+        for(Presence p : presences){
+            this.presenceDAO.save(p);
+        }
+    }
+
 }
