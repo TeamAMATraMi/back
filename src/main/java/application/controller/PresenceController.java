@@ -5,6 +5,7 @@ import application.model.Presence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -49,11 +50,36 @@ public class PresenceController {
         return this.presenceDAO.findByDate(id);
     }
 
-    @PutMapping("/presencesF")
-    public void putFichePresence(@RequestBody List<Presence> presences) {
+  /*  @PutMapping("/presencesF")
+    public List<Presence> putFichePresence(@RequestBody List<Presence> presences) {
+        List<Presence> result = new ArrayList<Presence>();
+
         for(Presence p : presences){
-            this.presenceDAO.save(p);
+            result.add(this.presenceDAO.save(p));
         }
+
+        return result;
+    }*/
+
+    @PutMapping("/presenceF")
+    public Presence putFIchePresence(@RequestBody List<Presence> presences) {
+        return this.presenceDAO.save(presences.get(0));
+    }
+
+    @GetMapping("/presencesIDDate/{idCours}/{date}")
+    public List<Presence> getPresencesByIdCoursDate(@PathVariable int idCours, @PathVariable int date){
+        List<Presence> byDate = this.presenceDAO.findByDate(date);
+        List<Presence> result = new ArrayList<Presence>();
+
+        if(byDate != null) {
+            for (Presence p : byDate) {
+                if(p.getIdCours() == idCours){
+                    result.add(p);
+                }
+            }
+        }
+
+        return result;
     }
 
 }
