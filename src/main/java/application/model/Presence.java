@@ -20,13 +20,13 @@ public class Presence {
     private boolean present;
 
     @Column(name = "date")
-    private String date;
+    private int date;
 
     public Presence(){
 
     }
 
-    public Presence(int id, int idCours, int idApprenant, boolean present, String date) {
+    public Presence(int id, int idCours, int idApprenant, boolean present, int date) {
         this.id = id;
         this.idCours = idCours;
         this.idApprenant = idApprenant;
@@ -48,11 +48,8 @@ public class Presence {
 
     public void setPresent(boolean present) { this.present = present; }
 
-    public String getDate() {
+    public int getDate() {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
 }
