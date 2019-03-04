@@ -51,11 +51,6 @@ public class PresenceController {
         return this.presenceDAO.findByDate(id);
     }
 
-    @PutMapping("/presencesF")
-    public Presence putFichePresence(@RequestBody Presence presence) {
-        return this.presenceDAO.save(presence);
-    }
-
     @GetMapping("/presencesIDDate/{idCours}/{date}")
     public List<Presence> getPresencesByIdCoursDate(@PathVariable int idCours, @PathVariable int date){
         List<Presence> byDate = this.presenceDAO.findByDate(date);
