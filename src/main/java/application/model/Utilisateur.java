@@ -13,16 +13,15 @@ public class Utilisateur {
 
     private String username;
     private String password;
+    private String token;
 
     public String getToken() {
-        return Token;
+        return token;
     }
 
     public void setToken(String token) {
-        Token = token;
+        this.token = token;
     }
-
-    private String Token;
 
     public Long getId() {
         return id;

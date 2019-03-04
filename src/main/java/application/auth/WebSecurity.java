@@ -25,11 +25,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     private UserRepository userRepository;
     private UserDetailsServiceImpl userDetailsService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-    /*
-    private BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-    */
 
     public WebSecurity(UserDetailsServiceImpl userDetailsService,
                        BCryptPasswordEncoder bCryptPasswordEncoder) {

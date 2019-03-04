@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value= HttpStatus.CONFLICT, reason="User already exists")  // 409
-public class UsernameExists extends RuntimeException {
+public class UserAlreadyCreated extends RuntimeException {
 
-    public UsernameExists() {
+    public UserAlreadyCreated() {
         super();
     }
 
