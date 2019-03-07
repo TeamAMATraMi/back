@@ -29,6 +29,20 @@ public class ApprenantController {
         return this.apprenantDAO.findByIdGroupe(id);
     }
 
+    @GetMapping("/apprenantsExist/{nom}/{prenom}")
+    public boolean getPresencesByIdCoursDate(@PathVariable String nom, @PathVariable String prenom){
+        List<Apprenant> apprenants = this.apprenantDAO.findByNom(nom);
+        boolean result = false;
+        if(apprenants != null) {
+            for (Apprenant a : apprenants) {
+                if(a.getPrenom() == prenom){
+                    result = true;
+                }
+            }
+        }
+        return result;
+    }
+
     @PostMapping("/apprenants")
     public void postApprenant(@RequestBody Apprenant apprenant) {
         this.apprenantDAO.save(apprenant);
