@@ -30,16 +30,19 @@ public class ApprenantController {
     }
 
     @GetMapping("/apprenantsExist/{nom}/{prenom}")
-    public boolean getPresencesByIdCoursDate(@PathVariable String nom, @PathVariable String prenom){
+    public boolean exist(@PathVariable String nom, @PathVariable String prenom){
+        System.out.println("CCCCCCCCCCCCCccccc ");
         List<Apprenant> apprenants = this.apprenantDAO.findByNom(nom);
         boolean result = false;
         if(apprenants != null) {
             for (Apprenant a : apprenants) {
-                if(a.getPrenom() == prenom){
+                if(a.getPrenom().toLowerCase() == prenom.toLowerCase()){
+                    System.out.println("AAAAAAAAAAAAAA " + result);
                     result = true;
                 }
             }
         }
+        System.out.println("BBBBBBBBBBBBBBBBBB " + result);
         return result;
     }
 
