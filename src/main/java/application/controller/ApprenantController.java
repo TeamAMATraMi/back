@@ -1,7 +1,9 @@
 package application.controller;
 
 import application.dao.ApprenantDAO;
+import application.dao.ApprenantZombieDAO;
 import application.model.Apprenant;
+import application.model.ApprenantZombie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,8 @@ public class ApprenantController {
 
     @Autowired
     private ApprenantDAO apprenantDAO;
+    @Autowired
+    private ApprenantZombieDAO apprenantZombieDAO;
 
     @GetMapping("/apprenants")
     public List<Apprenant> getApprenants() { return this.apprenantDAO.findAll(); }
@@ -51,6 +55,44 @@ public class ApprenantController {
 
     @DeleteMapping("/apprenants/{id}")
     public void deleteApprenant(@PathVariable int id) {
+        Apprenant apprenant = getApprenantById(id);
         this.apprenantDAO.deleteById(id);
+        ApprenantZombie apprenantZombie = new ApprenantZombie(
+                apprenant.getId(),
+                apprenant.getNom(),
+                apprenant.getPrenom(),
+                apprenant.getTelephone(),
+                apprenant.getAdresse(),
+                apprenant.getcodePostal(),
+                apprenant.getCommune(),
+                apprenant.getIdGroupe(),
+                apprenant.getDateInscription(),
+                apprenant.getAuteurDossier(),
+                apprenant.getMajeur(),
+                apprenant.getDateNaissance(),
+                apprenant.getGenre(),
+                apprenant.getPaysOrigine(),
+                apprenant.getNationalite(),
+                apprenant.getDateArrivee(),
+                apprenant.getQuartierPrioritaire(),
+                apprenant.getSituationPersonnelle(),
+                apprenant.getPriseCharge(),
+                apprenant.isRsa(),
+                apprenant.getTempsScolarisation(),
+                apprenant.getDiplome(),
+                apprenant.isMilieuScolaire(),
+                apprenant.getNiveauLangue(),
+                apprenant.isLireLangue(),
+                apprenant.isEcrireLangue(),
+                apprenant.isLireAlphaLatin(),
+                apprenant.isEcrireAlphaLatin(),
+                apprenant.isCotisationPayee(),
+                apprenant.getRemarques(),
+                apprenant.getStatutSejour(),
+                apprenant.getDateCarteSejour(),
+                apprenant.getDateFinCarteSejour(),
+                apprenant.getStatutPro(),
+                apprenant.getTypeContrat());
+        this.apprenantZombieDAO.save(apprenantZombie);
     }
 }
