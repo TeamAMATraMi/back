@@ -17,6 +17,8 @@ public class Presence {
 
     @Column(name = "idapprenant")
     private int idApprenant;
+
+    @Column(name = "present")
     private boolean present;
 
     @Column(name = "date")
