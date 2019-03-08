@@ -36,7 +36,6 @@ public class ApprenantController {
                 }
             }
         }
-        System.out.println(result);
         return result;
     }
 
