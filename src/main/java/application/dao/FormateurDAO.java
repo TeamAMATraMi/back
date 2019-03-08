@@ -10,6 +10,7 @@ import java.util.List;
 public interface FormateurDAO extends JpaRepository<Formateur, Integer> {
     public List<Formateur> findAll();
     public Formateur findById(int id);
+    public List<Formateur> findByNom(String nom);
     public Formateur save(Formateur formateur);
     public void deleteById(int id);
     public List<Formateur> findByIdSite(int id);

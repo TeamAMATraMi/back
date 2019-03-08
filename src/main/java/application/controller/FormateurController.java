@@ -29,6 +29,20 @@ public class FormateurController {
         return this.formateurDAO.findByIdSite(id);
     }
 
+    @GetMapping("/formateursExist/{nom}/{prenom}")
+    public boolean exist(@PathVariable String nom, @PathVariable String prenom){
+        List<Formateur> formateurs = this.formateurDAO.findByNom(nom);
+        boolean result = false;
+        if(formateurs != null) {
+            for (Formateur f : formateurs) {
+                if(f.getPrenom().toLowerCase().equals(prenom.toLowerCase())){
+                    result = true;
+                }
+            }
+        }
+        return result;
+    }
+
     @PostMapping("/formateurs")
     public void postFormateur(@RequestBody Formateur formateur) {
         this.formateurDAO.save(formateur);
