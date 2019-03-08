@@ -185,6 +185,8 @@ INSERT INTO `site` (`id`, `ville`) VALUES
 --
 
 INSERT INTO `presence` (`id`, `date`, `idapprenant`, `idcours`, `present`) VALUES
+(12345, 20191202, 6712345, 1234567, 0),
+(23451, 20191202, 7123456, 1234567, 0),
 (12345, 20191202, 6712345, 10, 0),
 (23451, 20191202, 7123456, 10, 0);
 
