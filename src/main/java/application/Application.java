@@ -53,6 +53,8 @@ public class Application implements WebMvcConfigurer {
         registry.addMapping("/*").allowedOrigins("*").allowedHeaders("*").allowedMethods("GET", "POST","PUT", "DELETE", "OPTIONS");
         registry.addMapping("/*/*").allowedOrigins("*").allowedHeaders("*").allowedMethods("GET", "POST","PUT", "DELETE", "OPTIONS");
         registry.addMapping("/*/*/*").allowedOrigins("*").allowedHeaders("*").allowedMethods("GET", "POST","PUT", "DELETE", "OPTIONS");
+        registry.addMapping("/*/*/*/*").allowedOrigins("*").allowedHeaders("*").allowedMethods("GET", "POST","PUT", "DELETE", "OPTIONS");
+
     }
 
 }

@@ -15,9 +15,7 @@ public class ApprenantController {
     private ApprenantDAO apprenantDAO;
 
     @GetMapping("/apprenants")
-    public List<Apprenant> getApprenants() {
-        return this.apprenantDAO.findAll();
-    }
+    public List<Apprenant> getApprenants() { return this.apprenantDAO.findAll(); }
 
     @GetMapping("/apprenants/{id}")
     public Apprenant getApprenantById(@PathVariable int id) {
@@ -25,24 +23,20 @@ public class ApprenantController {
     }
 
     @GetMapping("/apprenantsG/{id}")
-    public List<Apprenant> getApprenantsByGroupe(@PathVariable int id) {
-        return this.apprenantDAO.findByIdGroupe(id);
-    }
+    public List<Apprenant> getApprenantsByGroupe(@PathVariable int id) { return this.apprenantDAO.findByIdGroupe(id); }
 
     @GetMapping("/apprenantsExist/{nom}/{prenom}")
     public boolean exist(@PathVariable String nom, @PathVariable String prenom){
-        System.out.println("CCCCCCCCCCCCCccccc ");
         List<Apprenant> apprenants = this.apprenantDAO.findByNom(nom);
         boolean result = false;
         if(apprenants != null) {
             for (Apprenant a : apprenants) {
-                if(a.getPrenom().toLowerCase() == prenom.toLowerCase()){
-                    System.out.println("AAAAAAAAAAAAAA " + result);
+                if(a.getPrenom().toLowerCase().equals(prenom.toLowerCase())){
                     result = true;
                 }
             }
         }
-        System.out.println("BBBBBBBBBBBBBBBBBB " + result);
+        System.out.println(result);
         return result;
     }
 
