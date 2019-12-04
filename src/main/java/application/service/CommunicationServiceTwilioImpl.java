@@ -11,22 +11,22 @@ import com.twilio.type.PhoneNumber;
 
 @Service
 public class CommunicationServiceTwilioImpl implements CommunicationService{
-    @Value("${twilio.account_SID}")
     private final String ACCOUNT_SID;
-    @Value("${twilio.auth_token}")
     private final String AUTH_TOKEN;
-    @Value("${twilio.phone}")
     private final String PHONE_FROM;
+    private final boolean SMS_ENABLED;
 
-    public CommunicationServiceTwilioImpl(@Value("${twilio.account_SID}") String accountSID, @Value("${twilio.auth_token}") String authToken, @Value("${twilio.phone}") String phone) {
+    public CommunicationServiceTwilioImpl(@Value("${twilio.account_SID}") String accountSID, @Value("${twilio.auth_token}") String authToken, @Value("${twilio.phone}") String phone, @Value("${notifications.phone.sms}") boolean smsEnabled) {
     	this.ACCOUNT_SID = accountSID;
     	this.AUTH_TOKEN = authToken;
     	this.PHONE_FROM = phone;
+    	this.SMS_ENABLED = smsEnabled;
     }
 
 
     @Override
     public void sendSMS(String phoneTo, String text){
+    	if(!SMS_ENABLED) return;
     	try {
 	        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 	        Message message = Message.creator(new PhoneNumber(phoneTo),
