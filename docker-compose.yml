@@ -5,7 +5,7 @@ services:
     image: mysql
     container_name: applitrami-mysql
     ports:
-      - 3306:3306
+      - 23306:3306
     environment:
       MYSQL_ROOT_PASSWORD: "password"
       MYSQL_PASSWORD: "password"
