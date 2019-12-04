@@ -12,4 +12,4 @@ services:
       MYSQL_DATABASE: "applitrami"
       MYSQL_USER: "applitrami"
     volumes:
-      - /storage/docker/applitrami-data:/var/lib/mysql
+      - /Volumes:/var/lib/mysql
