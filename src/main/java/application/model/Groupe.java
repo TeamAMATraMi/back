@@ -15,7 +15,11 @@ public class Groupe {
     @Column(name = "idsite")
     private int idSite;
 
-    @Column(nullable = false)
+    @Column(name = "idFormateur")
+    private int idFormateur;
+
+
+	@Column(nullable = false)
     private String nom;
 
     public Groupe() {
@@ -43,6 +47,14 @@ public class Groupe {
     public void setIdSite(int idSite) {
         this.idSite = idSite;
     }
+    
+    public int getIdFormateur() {
+		return idFormateur;
+	}
+
+	public void setIdFormateur(int idFormateur) {
+		this.idFormateur = idFormateur;
+	}
 
     public String getNom() {
         return nom;
