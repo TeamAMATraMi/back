@@ -78,10 +78,10 @@ INSERT INTO `association` (`id`, `nom`) VALUES
 -- Contenu de la table `cours`
 --
 
-INSERT INTO `cours` (`id`, `duree`, `horaire`, `idformateur`, `idgroupe`, `matiere`) VALUES
-(1234567, 3, 08, 123456, 45678123, 'AAA'),
-(2345671, 3, 08, 123456, 45678123, 'BBB'),
-(3456712, 3, 08, 123456, 45678123, 'CCC');
+INSERT INTO `cours` (`id`, `duree`,  `idformateur`, `idgroupe`, `matiere`) VALUES
+(1234567, 3, 123456, 45678123, 'AAA'),
+(2345671, 3, 123456, 45678123, 'BBB'),
+(3456712, 3, 123456, 45678123, 'CCC');
 
 -- --------------------------------------------------------
 
@@ -177,6 +177,20 @@ INSERT INTO `site` (`id`, `ville`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `seance`
+--
+
+--
+-- Contenu de la table `seance`
+--
+
+INSERT INTO `seance` (`id`, `id_cours`, `date`, `horaire`) VALUES
+(1, 1234567, 20191202, 08),
+(2, 1234567, 20191202, 08);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `presence`
 --
 
@@ -184,9 +198,9 @@ INSERT INTO `site` (`id`, `ville`) VALUES
 -- Contenu de la table `presence`
 --
 
-INSERT INTO `presence` (`id`, `date`, `idapprenant`, `idcours`, `present`) VALUES
-(12345, 20191202, 6712345, 1234567, 0),
-(23451, 20191202, 7123456, 1234567, 0);
+INSERT INTO `presence` (`idseance`, `idapprenant`, `present`) VALUES
+(1, 234567, 0),
+(2, 1234567, 0);
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
