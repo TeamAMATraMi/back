@@ -82,7 +82,6 @@ CREATE TABLE `cours` (
   `id_cours` int(11) NOT NULL,
   `id_formateur` int(11) DEFAULT NULL,
   `id_groupe` int(11) DEFAULT NULL,
-  `horaire` date DEFAULT NULL,
   `matiere` varchar(50) DEFAULT NULL,
   `duree` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -148,7 +147,7 @@ CREATE TABLE `pays` (
 --
 
 CREATE TABLE `presence` (
-  `id_cours` int(11) NOT NULL,
+  `id_seance` int(11) NOT NULL,
   `id_apprenant` int(11) NOT NULL,
   `present` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -190,6 +189,19 @@ CREATE TABLE `site` (
   `ville` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `seance`
+--
+
+CREATE TABLE `seance` (
+  `id_seance` int(11) NOT NULL,
+  `id_cours` int(11) NOT NULL,
+  `date` date DEFAULT NULL,
+  `horaire` time DEFAULT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
 -- Index pour les tables déchargées
 --
@@ -247,7 +259,8 @@ ALTER TABLE `pays`
 -- Index pour la table `presence`
 --
 ALTER TABLE `presence`
-  ADD PRIMARY KEY (`id_cours`,`id_apprenant`),
+  ADD PRIMARY KEY (`id_seance`,`id_apprenant`),
+  ADD KEY `id_seance_foreign_presence` (`id_seance`),
   ADD KEY `id_apprenant_foreign_presence` (`id_apprenant`);
 
 --
@@ -267,6 +280,13 @@ ALTER TABLE `sejour`
 --
 ALTER TABLE `site`
   ADD PRIMARY KEY (`id_site`);
+
+--
+-- Index pour la table `seance`
+--
+ALTER TABLE `seance`
+  ADD PRIMARY KEY (`id_seance`),
+  ADD KEY `id_cours_foreign_seance` (`id_cours`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -321,6 +341,12 @@ ALTER TABLE `site`
   MODIFY `id_site` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `seance`
+--
+ALTER TABLE `seance`
+  MODIFY `id_seance` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Contraintes pour les tables déchargées
 --
 
@@ -361,13 +387,20 @@ ALTER TABLE `groupe`
 --
 ALTER TABLE `presence`
   ADD CONSTRAINT `id_apprenant_foreign_presence` FOREIGN KEY (`id_apprenant`) REFERENCES `apprenant` (`id_apprenant`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `id_cours_foreign_presence` FOREIGN KEY (`id_cours`) REFERENCES `cours` (`id_cours`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `id_seance_foreign_presence` FOREIGN KEY (`id_seance`) REFERENCES `seance` (`id_seance`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `sejour`
 --
 ALTER TABLE `sejour`
   ADD CONSTRAINT `id_apprenant_foreign_sejour` FOREIGN KEY (`id_apprenant`) REFERENCES `apprenant` (`id_apprenant`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+--
+-- Contraintes pour la table `seance`
+--
+ALTER TABLE `seance`
+  ADD CONSTRAINT `id_cours_foreign_seance` FOREIGN KEY (`id_cours`) REFERENCES `cours` (`id_cours`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
