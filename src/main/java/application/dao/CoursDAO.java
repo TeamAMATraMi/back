@@ -1,6 +1,7 @@
 package application.dao;
 
 import application.model.Cours;
+import application.model.Seance;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -10,5 +10,4 @@ public interface SeanceDAO extends JpaRepository<Seance, Integer> {
     public Seance findById(int id);
     public Seance save(Seance seance);
     public void deleteById(int id);
-    public List<Seance> findByIdCours(int id);
 }

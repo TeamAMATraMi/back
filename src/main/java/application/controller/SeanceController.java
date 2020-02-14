@@ -38,9 +38,4 @@ public class SeanceController {
     public void deleteSeance(@PathVariable int id) {
         this.seanceDAO.deleteById(id);
     }
-
-    @GetMapping("/seanceC/{id}")
-    public List<Seance> getSeanceByIdCours(@PathVariable int idCours) {
-        return this.seanceDAO.findByIdCours(idCours);
-    }
 }
