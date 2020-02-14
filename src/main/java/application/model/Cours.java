@@ -1,9 +1,9 @@
 package application.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Cours {
@@ -11,6 +11,10 @@ public class Cours {
     @Id
     @GeneratedValue
     private int id;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "cours")
+    private List<Seance> seances;
 
     @Column(name = "idformateur")
     private int idFormateur;
@@ -81,5 +85,13 @@ public class Cours {
 
     public void setDuree(int duree) {
         this.duree = duree;
+    }
+
+    public List<Seance> getSeances() {
+        return seances;
+    }
+
+    public void setSeances(List<Seance> seances) {
+        this.seances = seances;
     }
 }

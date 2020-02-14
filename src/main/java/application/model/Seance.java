@@ -1,9 +1,8 @@
 package application.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 
 @Entity
 public class Seance {
@@ -12,8 +11,10 @@ public class Seance {
     @GeneratedValue
     private int id;
 
-    @Column(name = "idcours")
-    private int idCours;
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "cours", nullable = false)
+    private Cours cours;
 
     @Column(name = "presence")
     private int idPresence;
@@ -24,9 +25,9 @@ public class Seance {
     @Column(name = "date")
     private String date;
 
-    public Seance(int id, int idCours, int idPresence, String horaire, String date) {
+    public Seance(int id, Cours cours, int idPresence, String horaire, String date) {
         this.id = id;
-        this.idCours = idCours;
+        this.cours = cours;
         this.idPresence = idPresence;
         this.horaire = horaire;
         this.date = date;
@@ -44,12 +45,8 @@ public class Seance {
         this.id = id;
     }
 
-    public int getIdCours() {
-        return idCours;
-    }
-
-    public void setIdCours(int idCours) {
-        this.idCours = idCours;
+    public Cours getCours() {
+        return cours;
     }
 
     public int getIdPresence() {
