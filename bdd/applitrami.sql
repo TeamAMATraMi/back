@@ -200,7 +200,7 @@ CREATE TABLE `seance` (
   `id_seance` int(11) NOT NULL,
   `id_cours` int(11) NOT NULL,
   `date` date DEFAULT NULL,
-  `horaire` time DEFAULT NULL,
+  `horaire` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
 -- Index pour les tables déchargées
