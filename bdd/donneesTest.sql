@@ -51,6 +51,14 @@ INSERT INTO `apprenant` (`id`, `nom`, `prenom`, `telephone`, `adresse`, `codepos
 (7654321, 'CIRSTEA', 'Horatiu', '+33659884455', '7, rue du Triomphe', '55000', 'Bar le Duc', 56781234, '2018-12-02', 'Isabelle', 0, '1975-12-02', 'M', 'Roumanie', 'Roumaine', '2018-12-02', 2, 'Marié(e)', 2, 0, 0, NULL, 0, 'A2', 1, 1, 0, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL),
 (54125867, 'CHU', 'Pika', '+33698954112', '45, rue du compteur electrique', '55700', 'Cervizy', 12345687, '2018-12-02', 'Isabelle', 0, '2005-12-03', 'M', 'Japon', 'Japonaise', '2018-12-02', 3, 'Célibataire', 3, 0, 1, NULL, 1, 'Analphabete', 0, 0, 0, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL);
 
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `utilisateur`
+--
+INSERT INTO  `utilisateur` (`id`, `password`, `token`, `username`) VALUES  (   1, '$2a$10$uOxPY1ty9QCKaIKgyts1je58TBnuA7Eq6KzmWWoUNHcPSax69FleO',    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU3OTk1MzkyMn0.lFz114Ek-FkkQNuIA8IhoqjEZc15BcXltuiQYXSTWpWEquFqCiUQX68IhmrZ2q-xGphvR93g_JDLkBOz_u75jQ',    'admin'  );
+
 -- --------------------------------------------------------
 
 --
@@ -198,9 +206,9 @@ INSERT INTO `seance` (`id`, `cours`, `date`, `horaire`) VALUES
 -- Contenu de la table `presence`
 --
 
-INSERT INTO `presence` (`idseance`, `idapprenant`, `present`, `date`) VALUES
-(1, 234567, 0, 20191202),
-(2, 1234567, 0, 20191202);
+INSERT INTO `presence` (`id`, `idseance`, `idapprenant`, `present`, `date`) VALUES
+(1, 1, 234567, 0, 20191202),
+(2, 2, 1234567, 0, 20191202);
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
