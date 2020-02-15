@@ -184,7 +184,7 @@ INSERT INTO `site` (`id`, `ville`) VALUES
 -- Contenu de la table `seance`
 --
 
-INSERT INTO `seance` (`id`, `id_cours`, `date`, `horaire`) VALUES
+INSERT INTO `seance` (`id`, `cours`, `date`, `horaire`) VALUES
 (1, 1234567, 20191202, 08),
 (2, 1234567, 20191202, 08);
 
@@ -198,9 +198,9 @@ INSERT INTO `seance` (`id`, `id_cours`, `date`, `horaire`) VALUES
 -- Contenu de la table `presence`
 --
 
-INSERT INTO `presence` (`idseance`, `idapprenant`, `present`) VALUES
-(1, 234567, 0),
-(2, 1234567, 0);
+INSERT INTO `presence` (`idseance`, `idapprenant`, `present`, `date`) VALUES
+(1, 234567, 0, 20191202),
+(2, 1234567, 0, 20191202);
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -12,8 +12,8 @@ public class Presence {
     @GeneratedValue
     private int id;
 
-    @Column(name = "idcours")
-    private int idCours;
+    @Column(name = "idseance")
+    private int idSeance;
 
     @Column(name = "idapprenant")
     private int idApprenant;
@@ -28,9 +28,9 @@ public class Presence {
 
     }
 
-    public Presence(int id, int idCours, int idApprenant, boolean present, int date) {
+    public Presence(int id, int idSeance, int idApprenant, boolean present, int date) {
         this.id = id;
-        this.idCours = idCours;
+        this.idSeance = idSeance;
         this.idApprenant = idApprenant;
         this.present = present;
         this.date = date;
@@ -38,9 +38,9 @@ public class Presence {
 
     public int getId() { return id; }
 
-    public int getIdCours(){ return idCours; }
+    public int getIdSeance(){ return idSeance; }
 
-    public void setIdCours(int idCours){ this.idCours = idCours; }
+    public void setIdSeance(int idSeance){ this.idSeance = idSeance; }
 
     public int getIdApprenant() { return idApprenant; }
 
