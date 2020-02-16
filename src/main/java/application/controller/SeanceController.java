@@ -29,7 +29,7 @@ public class SeanceController {
         this.seanceDAO.save(seance);
     }
 
-    @PutMapping("/seances")
+    @PutMapping("/seances/{id}")
     public Seance updateSeance(@RequestBody Seance seance) {
         return this.seanceDAO.save(seance);
     }

@@ -1,9 +1,15 @@
 package application.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 @Entity
 public class Seance {
 
@@ -11,7 +17,6 @@ public class Seance {
     @GeneratedValue
     private int id;
 
-    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "cours", nullable = false)
     private Cours cours;
@@ -47,6 +52,10 @@ public class Seance {
 
     public Cours getCours() {
         return cours;
+    }
+
+    public void setCours(Cours cours) {
+        this.cours = cours;
     }
 
     public int getIdPresence() {
