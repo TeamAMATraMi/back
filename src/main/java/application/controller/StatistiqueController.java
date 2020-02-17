@@ -270,4 +270,19 @@ public class StatistiqueController {
         return res;
     }
 
+    @GetMapping("/primoArrivant")
+    public Map<String, Integer> getByPrimoArrivant() {
+        Map<String, Integer> res = new HashMap<>();
+        int cmpPrimoArrivant = 0;
+        List<Apprenant> tmp = this.apprenantDAO.findAll();
+
+        for(Apprenant a : tmp){
+            if(a.getPrimoArrivant()){
+                cmpPrimoArrivant++;
+            }
+        }
+        res.put("Primo", cmpPrimoArrivant);
+        res.put("Non primo", (tmp.size() - cmpPrimoArrivant));
+        return res;
+    }
 }

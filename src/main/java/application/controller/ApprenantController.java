@@ -68,6 +68,7 @@ public class ApprenantController {
                 apprenant.getIdGroupe(),
                 apprenant.getDateInscription(),
                 apprenant.getAuteurDossier(),
+                apprenant.getPrimoArrivant(),
                 apprenant.getMajeur(),
                 apprenant.getDateNaissance(),
                 apprenant.getGenre(),
