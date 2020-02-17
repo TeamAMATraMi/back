@@ -31,6 +31,12 @@ public class StatistiqueController {
     @Autowired
     private QuartierPrioritaireDAO quartierDAO;
 
+    
+    /*
+     * return a Map<String, int> with two keys : "F", "M" 
+     * and the number of the people in the category
+     * 
+     */
     @GetMapping("/sexe")
     public Map<String, Integer> getBySexe() {
         Map<String, Integer> res = new HashMap<>();
@@ -47,21 +53,33 @@ public class StatistiqueController {
         return res;
     }
 
+    
+    /*
+     * return a Map<String, int> where the keys are the age of the people
+     * and the number of the people who are this age
+     */
     @GetMapping("/age")
     public Map<String, Integer> getByAge() {
         Map<String, Integer> res = new HashMap<>();
         List<Apprenant> tmp = this.apprenantDAO.findAll();
         for(Apprenant a : tmp){
-            String[] stmp = a.getDateNaissance().split("-");
-            if(res.containsKey(stmp[0])){
-                res.put(stmp[0], res.get(stmp[0]) + 1);
-            }else{
-                res.put(stmp[0], 1);
-            }
+        	if(!a.getDateNaissance().isEmpty()) {
+	            String[] stmp = a.getDateNaissance().split("-");
+	            if(res.containsKey(stmp[0])){
+	                res.put(stmp[0], res.get(stmp[0]) + 1);
+	            }else{
+	                res.put(stmp[0], 1);
+	            }
+        	}
         }
         return res;
     }
 
+    
+    /*
+     * return a Map<String, int> where the keys are the site
+     * and the number of the people who are in the site
+     */
     @GetMapping("/site")
     public Map<String, Integer> getBySite() {
         Map<String, Integer> res = new HashMap<>();
@@ -84,22 +102,17 @@ public class StatistiqueController {
         return res;
     }
 
-    @GetMapping("/nationalite")
-    public Map<String, Integer> getByNationalite(@PathVariable String nom) {
-        Map<String, Integer> res = new HashMap<>();
-        List<Apprenant> tmp = this.apprenantDAO.findAll();
-        for(Apprenant a : tmp){
-            String stmp = a.getNationalite();
-            if(res.containsKey(stmp)){
-                res.replace(stmp, res.get(stmp) + 1);
-            }
-            else{
-                res.put(stmp,1);
-            }
-        }
-        return res;
 
-        /*
+
+    /*
+     * @Param :
+     * String nom : Site name (nom = "all" to get all the sites)
+     *
+     * return a Map<String, int> where the keys are the nationality
+     * and the number of the people who have this nationality
+     */
+    @GetMapping("/nationalite/{nom}")
+    public Map<String, Integer> getByNationalite(@PathVariable String nom) {
         Map<String, Integer> res = new HashMap<>();
         List<Apprenant> atmp = this.apprenantDAO.findAll();
         List<Site> stmp = this.siteDAO.findAll();
@@ -118,10 +131,16 @@ public class StatistiqueController {
             }
         }
         return res;
-
-         */
     }
 
+    
+    /*
+     * @Param : 
+     * String nom : Site name (nom = "all" to get all the sites)
+     * 
+     * return a Map<String, int> where the keys are the type of the residence permit 
+     * and the number of the people who have this one
+     */
     @GetMapping("/titreSejour/{nom}")
     public Map<String, Integer> getByTitreSejour(@PathVariable String nom){
         Map<String, Integer> res = new HashMap<>();
@@ -151,7 +170,15 @@ public class StatistiqueController {
         }
         return res;
     }
-
+    
+    
+    /*
+     * @Param : 
+     * String nom : Site name (nom = "all" to get all the sites)
+     * 
+     * return a Map<String, int> where the keys are the "priority area"
+     * and the number of the people who are this category
+     */
     @GetMapping("/quartierPrio/{nom}")
     public Map<String, Integer> getByQuartierPrio(@PathVariable String nom){
         Map<String, Integer> res = new HashMap<>();
@@ -182,6 +209,14 @@ public class StatistiqueController {
         return res;
     }
 
+    
+    /*
+     * @Param :
+     * String nom : Site name (nom = "all" to get all the sites)
+     * 
+     * return a Map<int, int> where the keys are the school level 
+     * and the number of the people in each category
+     */
     @GetMapping("/niveauScol/{nom}")
     public Map<Integer, Integer> getByNiveauScol(@PathVariable String nom){
         Map<Integer, Integer> res = new HashMap<>();
@@ -204,6 +239,14 @@ public class StatistiqueController {
         return res;
     }
 
+    
+    /*
+     * @Param : 
+     * String nom : Site name (nom = "all" to get all the sites)
+     * 
+     * return a Map<String, int> where the keys are the professional status
+     * and the number of the people who are this category
+     */
     @GetMapping("/statutPro/{nom}")
     public Map<String, Integer> getByStatutPro(@PathVariable String nom){
         Map<String, Integer> res = new HashMap<>();
@@ -234,6 +277,14 @@ public class StatistiqueController {
         return res;
     }
 
+    
+    /*
+     * @Param : 
+     * String nom : Site name (nom = "all" to get all the sites)
+     * 
+     * return a Map<int, int> where the keys are the professional status
+     * and the number of the people who are this category
+     */
     @GetMapping("/priseCharge/{nom}")
     public Map<Integer, Integer> getByPriseCharge(@PathVariable String nom){
         Map<Integer, Integer> res = new HashMap<>();
@@ -256,6 +307,13 @@ public class StatistiqueController {
         return res;
     }
 
+    /*
+     * @Param : 
+     * String nom : Site name (nom = "all" to get all the sites)
+     * 
+     * return a Map<String, int> where the keys are the language level
+     * and the number of the people who are this category
+     */
     @GetMapping("/niveauLangue/{nom}")
     public Map<String, Integer> getByNiveauLangue(@PathVariable String nom){
         Map<String, Integer> res = new HashMap<>();
@@ -285,5 +343,22 @@ public class StatistiqueController {
         }
         return res;
     }
+    
+    
 
+    @GetMapping("/primoArrivant")
+    public Map<String, Integer> getByPrimoArrivant() {
+        Map<String, Integer> res = new HashMap<>();
+        int cmpPrimoArrivant = 0;
+        List<Apprenant> tmp = this.apprenantDAO.findAll();
+
+        for(Apprenant a : tmp){
+            if(a.getPrimoArrivant()){
+                cmpPrimoArrivant++;
+            }
+        }
+        res.put("Primo", cmpPrimoArrivant);
+        res.put("Non primo", (tmp.size() - cmpPrimoArrivant));
+        return res;
+    }
 }
