@@ -1,6 +1,8 @@
 package application.controller;
 
 import application.dao.SeanceDAO;
+import application.dao.CoursDAO;
+import application.model.Cours;
 import application.model.Seance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,8 @@ public class SeanceController {
 
     @Autowired
     private SeanceDAO seanceDAO;
+    @Autowired
+    private CoursDAO coursDAO;
 
     @GetMapping("/seances")
     public List<Seance> getSeances() {
@@ -37,5 +41,11 @@ public class SeanceController {
     @DeleteMapping("/seances/{id}")
     public void deleteSeance(@PathVariable int id) {
         this.seanceDAO.deleteById(id);
+    }
+
+    @GetMapping("/seancesC/{id}")
+    public List<Seance> getSeancesByIdCours(@PathVariable int id) {
+        Cours cours = coursDAO.findById(id);
+        return this.seanceDAO.findByCours(cours);
     }
 }
