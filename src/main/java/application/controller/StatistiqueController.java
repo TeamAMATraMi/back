@@ -84,8 +84,22 @@ public class StatistiqueController {
         return res;
     }
 
-    @GetMapping("/nationalite/{nom}")
+    @GetMapping("/nationalite")
     public Map<String, Integer> getByNationalite(@PathVariable String nom) {
+        Map<String, Integer> res = new HashMap<>();
+        List<Apprenant> tmp = this.apprenantDAO.findAll();
+        for(Apprenant a : tmp){
+            String stmp = a.getNationalite();
+            if(res.containsKey(stmp)){
+                res.replace(stmp, res.get(stmp) + 1);
+            }
+            else{
+                res.put(stmp,1);
+            }
+        }
+        return res;
+
+        /*
         Map<String, Integer> res = new HashMap<>();
         List<Apprenant> atmp = this.apprenantDAO.findAll();
         List<Site> stmp = this.siteDAO.findAll();
@@ -104,6 +118,8 @@ public class StatistiqueController {
             }
         }
         return res;
+
+         */
     }
 
     @GetMapping("/titreSejour/{nom}")
