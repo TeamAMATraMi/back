@@ -315,7 +315,7 @@ public class Apprenant {
     }
 
     public void setSituationPersonelle(String situationPersonelle) {
-        this.situationPersonnelle = situationPersonnelle;
+        this.situationPersonnelle = situationPersonelle;
     }
 
     public int getPriseCharge() {
