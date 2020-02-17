@@ -41,9 +41,9 @@ public class PresenceController {
         this.presenceDAO.deleteById(id);
     }
 
-    @GetMapping("/presencesC/{id}")
-    public List<Presence> getPresencesByIdCours(@PathVariable int id) {
-        return this.presenceDAO.findByIdCours(id);
+    @GetMapping("/presencesS/{id}")
+    public List<Presence> getPresencesByIdSeance(@PathVariable int id) {
+        return this.presenceDAO.findByIdSeance(id);
     }
 
     @GetMapping("/presencesD/{id}")
@@ -51,14 +51,14 @@ public class PresenceController {
         return this.presenceDAO.findByDate(id);
     }
 
-    @GetMapping("/presencesIDDate/{idCours}/{date}")
-    public List<Presence> getPresencesByIdCoursDate(@PathVariable int idCours, @PathVariable int date){
+    @GetMapping("/presencesIDDate/{idSeance}/{date}")
+    public List<Presence> getPresencesByIdSeanceDate(@PathVariable int idSeance, @PathVariable int date){
         List<Presence> byDate = this.presenceDAO.findByDate(date);
         List<Presence> result = new ArrayList<Presence>();
 
-        if(byDate != null) {
+        if(byDate != null && byDate.size() > 0) {
             for (Presence p : byDate) {
-                if(p.getIdCours() == idCours){
+                if(p.getIdSeance() == idSeance){
                     result.add(p);
                 }
             }

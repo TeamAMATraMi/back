@@ -1,16 +1,25 @@
 package application.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import javax.persistence.*;
+import java.util.List;
+
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 @Entity
 public class Cours {
 
     @Id
     @GeneratedValue
     private int id;
+
+    @OneToMany(mappedBy = "cours", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Seance> seances;
 
     @Column(name = "idformateur")
     private int idFormateur;
@@ -81,5 +90,13 @@ public class Cours {
 
     public void setDuree(int duree) {
         this.duree = duree;
+    }
+
+    public List<Seance> getSeances() {
+        return seances;
+    }
+
+    public void setSeances(List<Seance> seances) {
+        this.seances = seances;
     }
 }
