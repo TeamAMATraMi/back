@@ -31,6 +31,9 @@ public class Apprenant {
 
     @Column(name = "auteurdossier", nullable = false)
     private String auteurDossier;
+
+    @Column(name = "primoarrivant")
+    private boolean primoArrivant;
     private boolean majeur;
 
     @Column(name = "datenaissance")
@@ -111,6 +114,7 @@ public class Apprenant {
             int idGroupe,
             String dateInscription,
             String auteurDossier,
+            boolean primoArrivant,
             boolean majeur,
             String dateNaissance,
             char genre,
@@ -147,6 +151,7 @@ public class Apprenant {
         this.idGroupe = idGroupe;
         this.dateInscription = dateInscription;
         this.auteurDossier = auteurDossier;
+        this.primoArrivant = primoArrivant;
         this.majeur = majeur;
         this.dateNaissance = dateNaissance;
         this.genre = genre;
@@ -252,6 +257,14 @@ public class Apprenant {
 
     public void setAuteurDossier(String auteurDossier) {
         this.auteurDossier = auteurDossier;
+    }
+
+    public boolean getPrimoArrivant() {
+        return primoArrivant;
+    }
+
+    public void setPrimoArrivant(boolean primoArrivant) {
+        this.primoArrivant = primoArrivant;
     }
 
     public boolean getMajeur() {

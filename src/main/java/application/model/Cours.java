@@ -28,19 +28,15 @@ public class Cours {
     private int idGroupe;
 
     @Column(nullable = false)
-    private String horaire;
-
-    @Column(nullable = false)
     private String matiere;
 
     @Column(nullable = false)
     private int duree;
 
-    public Cours(int id, int idFormateur, int idGroupe, String horaire, String matiere, int duree) {
+    public Cours(int id, int idFormateur, int idGroupe, String matiere, int duree) {
         this.id = id;
         this.idFormateur = idFormateur;
         this.idGroupe = idGroupe;
-        this.horaire = horaire;
         this.matiere = matiere;
         this.duree = duree;
     }
@@ -66,14 +62,6 @@ public class Cours {
 
     public void setIdGroupe(int idGroupe) {
         this.idGroupe = idGroupe;
-    }
-
-    public String getHoraire() {
-        return horaire;
-    }
-
-    public void setHoraire(String horaire) {
-        this.horaire = horaire;
     }
 
     public String getMatiere() {
