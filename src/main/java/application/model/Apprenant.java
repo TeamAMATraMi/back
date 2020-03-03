@@ -32,7 +32,7 @@ public class Apprenant {
     @Column(name = "auteurdossier", nullable = false)
     private String auteurDossier;
 
-    @Column(name = "primoarrivant")
+    @Column(name = "primoarrivant",nullable = false)
     private boolean primoArrivant;
     private boolean majeur;
 
