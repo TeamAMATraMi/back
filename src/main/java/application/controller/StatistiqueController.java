@@ -345,6 +345,7 @@ public class StatistiqueController {
     }
     
     
+    
 
     @GetMapping("/primoArrivant")
     public Map<String, Integer> getByPrimoArrivant() {
