@@ -30,6 +30,8 @@ public class Seance {
     @Column(name = "date")
     private String date;
 
+
+
     public Seance(int id, Cours cours, int idPresence, String horaire, String date) {
         this.id = id;
         this.cours = cours;

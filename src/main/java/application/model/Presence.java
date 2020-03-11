@@ -1,9 +1,7 @@
 package application.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Presence {
@@ -22,13 +20,14 @@ public class Presence {
     private boolean present;
 
     @Column(name = "date")
-    private int date;
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
     public Presence(){
 
     }
 
-    public Presence(int id, int idSeance, int idApprenant, boolean present, int date) {
+    public Presence(int id, int idSeance, int idApprenant, boolean present, Date date) {
         this.id = id;
         this.idSeance = idSeance;
         this.idApprenant = idApprenant;
@@ -50,7 +49,7 @@ public class Presence {
 
     public void setPresent(boolean present) { this.present = present; }
 
-    public int getDate() {
+    public Date getDate() {
         return date;
     }
 
