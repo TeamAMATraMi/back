@@ -120,12 +120,22 @@ public class StatistiqueController {
         for(Apprenant a : atmp){
             for (Site s : stmp) {
                 for (Groupe g : gtmp) {
-                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+			if(a.getPaysOrigine() != null){
                         if (res.containsKey(a.getPaysOrigine())) {
                             res.put(a.getPaysOrigine(), res.get(a.getPaysOrigine()) + 1);
                         } else {
                             res.put(a.getPaysOrigine(), 1);
                         }
+}
+			else {
+                            if (res.containsKey("autre")) {
+                                res.put("autre", res.get("autre") + 1);
+                            } else {
+                                res.put("autre", 1);
+                            }
+                        }
+
                     }
                 }
             }
