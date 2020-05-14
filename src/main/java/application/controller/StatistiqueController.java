@@ -1,10 +1,12 @@
 package application.controller;
 
 import application.dao.ApprenantDAO;
+import application.dao.PresenceDAO;
 import application.dao.GroupeDAO;
 import application.dao.QuartierPrioritaireDAO;
 import application.dao.SiteDAO;
 import application.model.Apprenant;
+import application.model.Presence;
 import application.model.Groupe;
 import application.model.Site;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,9 @@ public class StatistiqueController {
     private GroupeDAO groupeDAO;
     @Autowired
     private QuartierPrioritaireDAO quartierDAO;
+    @Autowired
+    private PresenceDAO presenceDAO;
+
 
     
     /*
@@ -52,6 +57,33 @@ public class StatistiqueController {
         res.put("M", (tmp.size() - cmpF));
         return res;
     }
+
+/*
+ * return a Map<String, int> with two keys : "F", "M"
+ * and the number of the people in the category
+ *
+ */
+@GetMapping("/presence")
+public Map<String, Integer> getByPresence() {
+    Map<String, Integer> res = new HashMap<>();
+    List<Presence> stmp = this.presenceDAO.findAll();
+    int cmpP = 0;
+    int cmpA=0;
+    List<Apprenant> tmp = this.apprenantDAO.findAll();
+    for(Apprenant a : tmp){
+        for (Presence s : stmp) {
+            if (a.getId() == s.getIdApprenant() && s.isPresent()) {
+                cmpP++;
+            }
+            else if ( a.getId() == s.getIdApprenant() && s.isPresent()==false){
+                cmpA++;
+            }
+        }
+    }
+    res.put("Present", cmpP);
+    res.put("Absent", cmpA);
+    return res;
+}
 
     
     /*
@@ -120,12 +152,22 @@ public class StatistiqueController {
         for(Apprenant a : atmp){
             for (Site s : stmp) {
                 for (Groupe g : gtmp) {
-                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+			if(a.getPaysOrigine() != null){
                         if (res.containsKey(a.getPaysOrigine())) {
                             res.put(a.getPaysOrigine(), res.get(a.getPaysOrigine()) + 1);
                         } else {
                             res.put(a.getPaysOrigine(), 1);
                         }
+}
+			else {
+                            if (res.containsKey("autre")) {
+                                res.put("autre", res.get("autre") + 1);
+                            } else {
+                                res.put("autre", 1);
+                            }
+                        }
+
                     }
                 }
             }
