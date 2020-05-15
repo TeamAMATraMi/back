@@ -63,22 +63,21 @@ public class StatistiqueController {
  * and the number of the people in the category
  *
  */
-@GetMapping("/presence")
-public Map<String, Integer> getByPresence() {
+@GetMapping("/presence/{nom}")
+public Map<String, Integer> getByPresence(@PathVariable Integer nom) {
     Map<String, Integer> res = new HashMap<>();
     List<Presence> stmp = this.presenceDAO.findAll();
     int cmpP = 0;
     int cmpA=0;
-    List<Apprenant> tmp = this.apprenantDAO.findAll();
-    for(Apprenant a : tmp){
+    
         for (Presence s : stmp) {
-            if (a.getId() == s.getIdApprenant() && s.isPresent()) {
+            if ( nom ==s.getIdApprenant() && s.isPresent()) {
                 cmpP++;
             }
-            else if ( a.getId() == s.getIdApprenant() && s.isPresent()==false){
+            if ( nom==s.getIdApprenant() && s.isPresent()==false){
                 cmpA++;
             }
-        }
+        
     }
     res.put("Present", cmpP);
     res.put("Absent", cmpA);
