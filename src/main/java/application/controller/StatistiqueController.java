@@ -42,20 +42,37 @@ public class StatistiqueController {
      * and the number of the people in the category
      * 
      */
-    @GetMapping("/sexe")
-    public Map<String, Integer> getBySexe() {
-        Map<String, Integer> res = new HashMap<>();
-        int cmpF = 0;
-        List<Apprenant> tmp = this.apprenantDAO.findAll();
+    @GetMapping("/sexe/{nom}")
+public Map<String, Integer> getBySexe(@PathVariable String nom) {
+    Map<String, Integer> res = new HashMap<>();
+    int cmpF = 0;
+    int cmpH = 0;
+    List<Apprenant> atmp = this.apprenantDAO.findAll();
+    List<Site> stmp = this.siteDAO.findAll();
+    List<Groupe> gtmp = this.groupeDAO.findAll();
+    for(Apprenant a : atmp) {
+        for (Site s : stmp) {
+            for (Groupe g : gtmp) {
+                if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                    if (a.getGenre() == 'F') {
+                        cmpF++;
+                    } 
+		else{
+                        cmpH++;
+                    }
 
-        for(Apprenant a : tmp){
-            if(a.getGenre() == 'F'){
-                cmpF++;
+
+                }
             }
         }
-        res.put("F", cmpF);
-        res.put("M", (tmp.size() - cmpF));
-        return res;
+    }
+                res.put("F", cmpF);
+                res.put("M", (cmpH));
+                
+                
+                return res;
+            
+        
     }
 
 /*
@@ -89,30 +106,35 @@ public Map<String, Integer> getByPresence(@PathVariable Integer nom) {
      * return a Map<String, int> where the keys are the age of the people
      * and the number of the people who are this age
      */
-    @GetMapping("/age")
-    public Map<String, Integer> getByAge() {
-        Map<String, Integer> res = new HashMap<>();
-        List<Apprenant> tmp = this.apprenantDAO.findAll();
-        for(Apprenant a : tmp){
-        	if(!a.getDateNaissance().isEmpty()) {
-	            String[] stmp = a.getDateNaissance().split("-");
-	            if(res.containsKey(stmp[0])){
-	                res.put(stmp[0], res.get(stmp[0]) + 1);
-	            }else{
-	                res.put(stmp[0], 1);
-	            }
-        	}
-        }
-        return res;
-    }
-
+  
+   @GetMapping("/age/{nom}")
+public Map<String, Integer> getByAge(@PathVariable String nom) {
+    Map<String, Integer> res = new HashMap<>();
+    List<Apprenant> atmp = this.apprenantDAO.findAll();
+    List<Site> stmp = this.siteDAO.findAll();
+    List<Groupe> gtmp = this.groupeDAO.findAll();
+    for(Apprenant a : atmp) {
+        for (Site s : stmp) {
+            for (Groupe g : gtmp) {
+                if(!a.getDateNaissance().isEmpty() && (s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                    String[] date = a.getDateNaissance().split("-");
+                    if(res.containsKey(date[0])){
+                        res.put(date[0], res.get(date[0]) + 1);
+                    }else{
+                        res.put(date[0], 1);
+                    }
+                }
+            }
+        }}
+    return res;
+}
     
     /*
      * return a Map<String, int> where the keys are the site
      * and the number of the people who are in the site
      */
-    @GetMapping("/site")
-    public Map<String, Integer> getBySite() {
+    @GetMapping("/site/{nom}")
+    public Map<String, Integer> getBySite(@PathVariable String nom) {
         Map<String, Integer> res = new HashMap<>();
         List<Apprenant> atmp = this.apprenantDAO.findAll();
         List<Site> stmp = this.siteDAO.findAll();
@@ -120,7 +142,7 @@ public Map<String, Integer> getByPresence(@PathVariable Integer nom) {
         for(Apprenant a : atmp) {
             for (Site s : stmp) {
                 for (Groupe g : gtmp) {
-                    if (a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
                         if (res.containsKey(s.getVille())) {
                             res.put(s.getVille(), res.get(s.getVille()) + 1);
                         } else {
@@ -388,19 +410,32 @@ public Map<String, Integer> getByPresence(@PathVariable Integer nom) {
     
     
 
-    @GetMapping("/primoArrivant")
-    public Map<String, Integer> getByPrimoArrivant() {
-        Map<String, Integer> res = new HashMap<>();
-        int cmpPrimoArrivant = 0;
-        List<Apprenant> tmp = this.apprenantDAO.findAll();
+   @GetMapping("/primoArrivant/{nom}")
+public Map<String, Integer> getByPrimoArrivant(@PathVariable String nom) {
+    Map<String, Integer> res = new HashMap<>();
+    int cmpPrimoArrivant = 0;
+    int cmpNonPrimo = 0;
+    List<Apprenant> atmp = this.apprenantDAO.findAll();
+    List<Site> stmp = this.siteDAO.findAll();
+    List<Groupe> gtmp = this.groupeDAO.findAll();
+    for (Apprenant a : atmp) {
+        for (Site s : stmp) {
+            for (Groupe g : gtmp) {
+                if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                    if (a.getPrimoArrivant()) {
+                        cmpPrimoArrivant++;
+                    } else {
+                        cmpNonPrimo++;
+                    }
 
-        for(Apprenant a : tmp){
-            if(a.getPrimoArrivant()){
-                cmpPrimoArrivant++;
+                }
+
+               
             }
         }
-        res.put("Primo", cmpPrimoArrivant);
-        res.put("Non primo", (tmp.size() - cmpPrimoArrivant));
-        return res;
     }
+    res.put("Primo", cmpPrimoArrivant);
+    res.put("Non primo", cmpNonPrimo);
+    return res;
+}
 }
