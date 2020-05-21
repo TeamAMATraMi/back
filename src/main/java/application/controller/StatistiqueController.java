@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.lang.*;
+import java.text.*;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/api")
@@ -42,8 +45,8 @@ public class StatistiqueController {
      * and the number of the people in the category
      * 
      */
-    @GetMapping("/sexe/{nom}")
-public Map<String, Integer> getBySexe(@PathVariable String nom) {
+    @GetMapping("/sexe/{nom}/{dateDebut}/{dateFin}")
+    public Map<String, Integer> getBySexe(@PathVariable String nom,@PathVariable String dateDebut,@PathVariable String dateFin) {
     Map<String, Integer> res = new HashMap<>();
     int cmpF = 0;
     int cmpH = 0;
@@ -53,7 +56,8 @@ public Map<String, Integer> getBySexe(@PathVariable String nom) {
     for(Apprenant a : atmp) {
         for (Site s : stmp) {
             for (Groupe g : gtmp) {
-                if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                if ( (s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()
+&& (a.getDateInscription().compareTo(dateFin)<=0 || dateFin.equals("1")) && (a.getDateInscription().compareTo(dateDebut)>=0 || dateDebut.equals("1")) ) {
                     if (a.getGenre() == 'F') {
                         cmpF++;
                     } 
@@ -106,9 +110,8 @@ public Map<String, Integer> getByPresence(@PathVariable Integer nom) {
      * return a Map<String, int> where the keys are the age of the people
      * and the number of the people who are this age
      */
-  
-   @GetMapping("/age/{nom}")
-public Map<String, Integer> getByAge(@PathVariable String nom) {
+     @GetMapping("/age/{nom}/{dateDebut}/{dateFin}")
+public Map<String, Integer> getByAge(@PathVariable String nom,@PathVariable String dateDebut,@PathVariable String dateFin) {
     Map<String, Integer> res = new HashMap<>();
     List<Apprenant> atmp = this.apprenantDAO.findAll();
     List<Site> stmp = this.siteDAO.findAll();
@@ -116,7 +119,7 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
     for(Apprenant a : atmp) {
         for (Site s : stmp) {
             for (Groupe g : gtmp) {
-                if(!a.getDateNaissance().isEmpty() && (s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                if(!a.getDateNaissance().isEmpty() && (s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId() && (a.getDateInscription().compareTo(dateFin)<=0 || dateFin.equals("1")) && (a.getDateInscription().compareTo(dateDebut)>=0 || dateDebut.equals("1")) ){
                     String[] date = a.getDateNaissance().split("-");
                     if(res.containsKey(date[0])){
                         res.put(date[0], res.get(date[0]) + 1);
@@ -133,8 +136,8 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
      * return a Map<String, int> where the keys are the site
      * and the number of the people who are in the site
      */
-    @GetMapping("/site/{nom}")
-    public Map<String, Integer> getBySite(@PathVariable String nom) {
+    @GetMapping("/site/{nom}/{dateDebut}/{dateFin}")
+    public Map<String, Integer> getBySite(@PathVariable String nom,@PathVariable String dateDebut,@PathVariable String dateFin) {
         Map<String, Integer> res = new HashMap<>();
         List<Apprenant> atmp = this.apprenantDAO.findAll();
         List<Site> stmp = this.siteDAO.findAll();
@@ -142,7 +145,7 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
         for(Apprenant a : atmp) {
             for (Site s : stmp) {
                 for (Groupe g : gtmp) {
-                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                    if ( (s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()&& (a.getDateInscription().compareTo(dateFin)<=0 || dateFin.equals("1") ) && (a.getDateInscription().compareTo(dateDebut)>=0 || dateDebut.equals("1")) ) {
                         if (res.containsKey(s.getVille())) {
                             res.put(s.getVille(), res.get(s.getVille()) + 1);
                         } else {
@@ -164,16 +167,16 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
      * return a Map<String, int> where the keys are the nationality
      * and the number of the people who have this nationality
      */
-    @GetMapping("/nationalite/{nom}")
-    public Map<String, Integer> getByNationalite(@PathVariable String nom) {
+    @GetMapping("/nationalite/{nom}/{dateDebut}/{dateFin}")
+    public Map<String, Integer> getByNationalite(@PathVariable String nom,@PathVariable String dateDebut,@PathVariable String dateFin) {
         Map<String, Integer> res = new HashMap<>();
         List<Apprenant> atmp = this.apprenantDAO.findAll();
         List<Site> stmp = this.siteDAO.findAll();
-        List<Groupe> gtmp = this.groupeDAO.findAll();
+        List<Groupe> gtmp = this.groupeDAO.findAll();	
         for(Apprenant a : atmp){
             for (Site s : stmp) {
-                for (Groupe g : gtmp) {
-                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                for (Groupe g : gtmp) {       			
+                    if ( (s.getVille().equals(nom) || nom.equals("all")) && (a.getDateInscription().compareTo(dateFin)<=0 || dateFin.equals("1")) && (a.getDateInscription().compareTo(dateDebut)>=0 || dateDebut.equals("1")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
 			if(a.getPaysOrigine() != null){
                         if (res.containsKey(a.getPaysOrigine())) {
                             res.put(a.getPaysOrigine(), res.get(a.getPaysOrigine()) + 1);
@@ -204,8 +207,8 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
      * return a Map<String, int> where the keys are the type of the residence permit 
      * and the number of the people who have this one
      */
-    @GetMapping("/titreSejour/{nom}")
-    public Map<String, Integer> getByTitreSejour(@PathVariable String nom){
+    @GetMapping("/titreSejour/{nom}/{dateDebut}/{dateFin}")
+    public Map<String, Integer> getByTitreSejour(@PathVariable String nom,@PathVariable String dateDebut,@PathVariable String dateFin) {
         Map<String, Integer> res = new HashMap<>();
         List<Apprenant> atmp = this.apprenantDAO.findAll();
         List<Site> stmp = this.siteDAO.findAll();
@@ -213,7 +216,7 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
         for(Apprenant a : atmp) {
             for (Site s : stmp) {
                 for (Groupe g : gtmp) {
-                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId() && (a.getDateInscription().compareTo(dateFin)<=0 || dateFin.equals("1") ) && (a.getDateInscription().compareTo(dateDebut)>=0 || dateDebut.equals("1")) ) {
                         if(a.getStatutSejour() != null){
                             if (res.containsKey(a.getStatutSejour())) {
                                 res.put(a.getStatutSejour(), res.get(a.getStatutSejour()) + 1);
@@ -242,8 +245,8 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
      * return a Map<String, int> where the keys are the "priority area"
      * and the number of the people who are this category
      */
-    @GetMapping("/quartierPrio/{nom}")
-    public Map<String, Integer> getByQuartierPrio(@PathVariable String nom){
+    @GetMapping("/quartierPrio/{nom}/{dateDebut}/{dateFin}")
+    public Map<String, Integer> getByQuartierPrio(@PathVariable String nom,@PathVariable String dateDebut,@PathVariable String dateFin) {
         Map<String, Integer> res = new HashMap<>();
         List<Apprenant> atmp = this.apprenantDAO.findAll();
         List<Site> stmp = this.siteDAO.findAll();
@@ -251,7 +254,7 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
         for(Apprenant a : atmp) {
             for (Site s : stmp) {
                 for (Groupe g : gtmp) {
-                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId() && (a.getDateInscription().compareTo(dateFin)<=0 || dateFin.equals("1")) && (a.getDateInscription().compareTo(dateDebut)>=0 || dateDebut.equals("1")) ) {
                         if(a.getQuartierPrioritaire() != null){
                             if (res.containsKey(this.quartierDAO.findById(a.getQuartierPrioritaire()).get().getNom())) {
                                 res.put(this.quartierDAO.findById(a.getQuartierPrioritaire()).get().getNom(), res.get(this.quartierDAO.findById(a.getQuartierPrioritaire()).get().getNom()) + 1);
@@ -280,8 +283,8 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
      * return a Map<int, int> where the keys are the school level 
      * and the number of the people in each category
      */
-    @GetMapping("/niveauScol/{nom}")
-    public Map<Integer, Integer> getByNiveauScol(@PathVariable String nom){
+    @GetMapping("/niveauScol/{nom}/{dateDebut}/{dateFin}")
+    public Map<Integer, Integer> getByNiveauScol(@PathVariable String nom,@PathVariable String dateDebut,@PathVariable String dateFin) {
         Map<Integer, Integer> res = new HashMap<>();
         List<Apprenant> atmp = this.apprenantDAO.findAll();
         List<Site> stmp = this.siteDAO.findAll();
@@ -289,7 +292,7 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
         for(Apprenant a : atmp) {
             for (Site s : stmp) {
                 for (Groupe g : gtmp) {
-                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId() && (a.getDateInscription().compareTo(dateFin)<=0 || dateFin.equals("1")) && (a.getDateInscription().compareTo(dateDebut)>=0 || dateDebut.equals("1")) ) {
                         if (res.containsKey(a.getTempsScolarisation())) {
                             res.put(a.getTempsScolarisation(), res.get(a.getTempsScolarisation()) + 1);
                         } else {
@@ -310,8 +313,8 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
      * return a Map<String, int> where the keys are the professional status
      * and the number of the people who are this category
      */
-    @GetMapping("/statutPro/{nom}")
-    public Map<String, Integer> getByStatutPro(@PathVariable String nom){
+    @GetMapping("/statutPro/{nom}/{dateDebut}/{dateFin}")
+    public Map<String, Integer> getByStatutPro(@PathVariable String nom,@PathVariable String dateDebut,@PathVariable String dateFin) {
         Map<String, Integer> res = new HashMap<>();
         List<Apprenant> atmp = this.apprenantDAO.findAll();
         List<Site> stmp = this.siteDAO.findAll();
@@ -319,7 +322,7 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
         for(Apprenant a : atmp) {
             for (Site s : stmp) {
                 for (Groupe g : gtmp) {
-                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId() && (a.getDateInscription().compareTo(dateFin)<=0 || dateFin.equals("1") ) && (a.getDateInscription().compareTo(dateDebut)>=0 || dateDebut.equals("1")) ) {
                         if (a.getStatutPro() != null) {
                             if (res.containsKey(this.quartierDAO.findById(a.getQuartierPrioritaire()).get().getNom())) {
                                 res.put(a.getStatutPro(), res.get(a.getStatutPro()) + 1);
@@ -348,8 +351,8 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
      * return a Map<int, int> where the keys are the professional status
      * and the number of the people who are this category
      */
-    @GetMapping("/priseCharge/{nom}")
-    public Map<Integer, Integer> getByPriseCharge(@PathVariable String nom){
+    @GetMapping("/priseCharge/{nom}/{dateDebut}/{dateFin}")
+    public Map<Integer, Integer> getByPriseCharge(@PathVariable String nom,@PathVariable String dateDebut,@PathVariable String dateFin) {
         Map<Integer, Integer> res = new HashMap<>();
         List<Apprenant> atmp = this.apprenantDAO.findAll();
         List<Site> stmp = this.siteDAO.findAll();
@@ -357,7 +360,7 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
         for(Apprenant a : atmp) {
             for (Site s : stmp) {
                 for (Groupe g : gtmp) {
-                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId() && (a.getDateInscription().compareTo(dateFin)<=0 || dateFin.equals("1") ) && (a.getDateInscription().compareTo(dateDebut)>=0 || dateDebut.equals("1")) ) {
                         if (res.containsKey(a.getPriseCharge())) {
                             res.put(a.getPriseCharge(), res.get(a.getPriseCharge()) + 1);
                         } else {
@@ -377,8 +380,8 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
      * return a Map<String, int> where the keys are the language level
      * and the number of the people who are this category
      */
-    @GetMapping("/niveauLangue/{nom}")
-    public Map<String, Integer> getByNiveauLangue(@PathVariable String nom){
+    @GetMapping("/niveauLangue/{nom}/{dateDebut}/{dateFin}")
+    public Map<String, Integer> getByNiveauLangue(@PathVariable String nom,@PathVariable String dateDebut,@PathVariable String dateFin) {
         Map<String, Integer> res = new HashMap<>();
         List<Apprenant> atmp = this.apprenantDAO.findAll();
         List<Site> stmp = this.siteDAO.findAll();
@@ -386,7 +389,7 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
         for(Apprenant a : atmp) {
             for (Site s : stmp) {
                 for (Groupe g : gtmp) {
-                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                    if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId() && (a.getDateInscription().compareTo(dateFin)<=0 || dateFin.equals("1") ) && (a.getDateInscription().compareTo(dateDebut)>=0 || dateDebut.equals("1")) ) {
                         if (a.getNiveauLangue() != null) {
                             if (res.containsKey(a.getNiveauLangue())) {
                                 res.put(a.getNiveauLangue(), res.get(a.getNiveauLangue()) + 1);
@@ -410,8 +413,8 @@ public Map<String, Integer> getByAge(@PathVariable String nom) {
     
     
 
-   @GetMapping("/primoArrivant/{nom}")
-public Map<String, Integer> getByPrimoArrivant(@PathVariable String nom) {
+   @GetMapping("/primoArrivant/{nom}/{dateDebut}/{dateFin}")
+public Map<String, Integer> getByPrimoArrivant(@PathVariable String nom,@PathVariable String dateDebut,@PathVariable String dateFin) {
     Map<String, Integer> res = new HashMap<>();
     int cmpPrimoArrivant = 0;
     int cmpNonPrimo = 0;
@@ -421,7 +424,7 @@ public Map<String, Integer> getByPrimoArrivant(@PathVariable String nom) {
     for (Apprenant a : atmp) {
         for (Site s : stmp) {
             for (Groupe g : gtmp) {
-                if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()) {
+                if ((s.getVille().equals(nom) || nom.equals("all")) && a.getIdGroupe() == g.getId() && a.getIdGroupe() == g.getId() && g.getIdSite() == s.getId()&& (a.getDateInscription().compareTo(dateFin)<=0 || dateFin.equals("1") ) && (a.getDateInscription().compareTo(dateDebut)>=0 || dateDebut.equals("1")) ) {
                     if (a.getPrimoArrivant()) {
                         cmpPrimoArrivant++;
                     } else {
