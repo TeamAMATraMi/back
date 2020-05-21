@@ -129,6 +129,10 @@ public Map<String, Integer> getByAge(@PathVariable String nom,@PathVariable Stri
                 }
             }
         }}
+
+	if(res.isEmpty()){
+	 res.put("", 0);
+	}
     return res;
 }
     
@@ -155,7 +159,10 @@ public Map<String, Integer> getByAge(@PathVariable String nom,@PathVariable Stri
                 }
             }
         }
-        return res;
+       if(res.isEmpty()){
+	 res.put("", 0);
+	}
+    return res;
     }
 
 
@@ -196,7 +203,10 @@ public Map<String, Integer> getByAge(@PathVariable String nom,@PathVariable Stri
                 }
             }
         }
-        return res;
+        if(res.isEmpty()){
+	 res.put("", 0);
+	}
+    return res;
     }
 
     
@@ -234,7 +244,10 @@ public Map<String, Integer> getByAge(@PathVariable String nom,@PathVariable Stri
                 }
             }
         }
-        return res;
+       if(res.isEmpty()){
+	 res.put("", 0);
+	}
+    return res;
     }
     
     
@@ -272,7 +285,10 @@ public Map<String, Integer> getByAge(@PathVariable String nom,@PathVariable Stri
                 }
             }
         }
-        return res;
+        if(res.isEmpty()){
+	 res.put("", 0);
+	}
+    return res;
     }
 
     
@@ -302,7 +318,10 @@ public Map<String, Integer> getByAge(@PathVariable String nom,@PathVariable Stri
                 }
             }
         }
-        return res;
+        if(res.isEmpty()){
+	 res.put(0, 0);
+	}
+    return res;
     }
 
     
@@ -340,7 +359,10 @@ public Map<String, Integer> getByAge(@PathVariable String nom,@PathVariable Stri
                 }
             }
         }
-        return res;
+       if(res.isEmpty()){
+	 res.put("", 0);
+	}
+    return res;
     }
 
     
@@ -370,7 +392,10 @@ public Map<String, Integer> getByAge(@PathVariable String nom,@PathVariable Stri
                 }
             }
         }
-        return res;
+       if(res.isEmpty()){
+	 res.put(0, 0);
+	}
+    return res;
     }
 
     /*
@@ -407,7 +432,10 @@ public Map<String, Integer> getByAge(@PathVariable String nom,@PathVariable Stri
                 }
             }
         }
-        return res;
+        if(res.isEmpty()){
+	 res.put("", 0);
+	}
+    return res;
     }
     
     
