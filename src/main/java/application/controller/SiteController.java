@@ -29,6 +29,21 @@ public class SiteController {
         this.siteDAO.save(site);
     }
 
+@GetMapping("/siteExist/{ville}")
+public boolean exist(@PathVariable String ville){
+    List<Site> sites = this.siteDAO.findAll();
+    boolean result = false;
+    if(sites != null) {
+        for (Site s : sites) {
+            if(s.getVille().toLowerCase().equals(ville.toLowerCase())){
+                result = true;
+            }
+        }
+    }
+    return result;
+}
+
+
     @PutMapping("/sites")
     public Site updateSite(@RequestBody Site site) {
         return this.siteDAO.save(site);
