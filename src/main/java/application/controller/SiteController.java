@@ -43,6 +43,20 @@ public boolean exist(@PathVariable String ville){
     return result;
 }
 
+    @GetMapping("/siteByVille/{ville}")
+    public Integer getIdByVille(@PathVariable String ville){
+        List<Site> sites = this.siteDAO.findAll();
+        Integer result=null;
+        if(sites != null) {
+            for (Site s : sites) {
+                if(s.getVille().toLowerCase().equals(ville.toLowerCase())){
+                    return result = s.getId();
+                }
+            }
+        }
+        return result;
+    }
+
 
     @PutMapping("/sites")
     public Site updateSite(@RequestBody Site site) {
