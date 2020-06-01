@@ -29,19 +29,19 @@ public class SiteController {
         this.siteDAO.save(site);
     }
 
-@GetMapping("/siteExist/{ville}")
-public boolean exist(@PathVariable String ville){
-    List<Site> sites = this.siteDAO.findAll();
-    boolean result = false;
-    if(sites != null) {
-        for (Site s : sites) {
-            if(s.getVille().toLowerCase().equals(ville.toLowerCase())){
-                result = true;
+    @GetMapping("/siteExist/{ville}")
+    public boolean exist(@PathVariable String ville){
+        List<Site> sites = this.siteDAO.findAll();
+        boolean result = false;
+        if(sites != null) {
+            for (Site s : sites) {
+                if(s.getVille().toLowerCase().equals(ville.toLowerCase())){
+                    result = true;
+                }
             }
         }
+        return result;
     }
-    return result;
-}
 
     @GetMapping("/siteByVille/{ville}")
     public Integer getIdByVille(@PathVariable String ville){

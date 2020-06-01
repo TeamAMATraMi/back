@@ -38,7 +38,7 @@ public class GroupeController {
 
         for(Groupe g : gr){
             if(g.getIdSite() == oneGr.getIdSite()){
-               i = g.getId();
+                i = g.getId();
             }
         }
 
@@ -51,6 +51,39 @@ public class GroupeController {
         }
         return "ok";
     }
+
+    //Recuperer l'id du groupe par le nom du groupe
+    @GetMapping("/groupeByNom/{nom}")
+    public Integer getIdByNom(@PathVariable String nom){
+        List<Groupe> groupe = this.groupeDAO.findAll();
+        Integer result=null;
+        if(groupe != null) {
+            for (Groupe g : groupe) {
+                if(g.getNom().toLowerCase().equals(nom.toLowerCase())){
+                    return result = g.getId();
+                }
+            }
+        }
+        return result;
+    }
+
+//Fonction qui check si le groupe existe deja
+
+    @GetMapping("/groupExist/{nom}")
+    public boolean exist(@PathVariable String nom){
+        List<Groupe> groupe = this.groupeDAO.findAll();
+        boolean result = false;
+        if(groupe != null) {
+            for (Groupe g : groupe) {
+                if(g.getNom().toLowerCase().equals(nom.toLowerCase())){
+                    result = true;
+                }
+            }
+        }
+        return result;
+    }
+
+
 
     @PostMapping("/groupes")
     public void postGroupe(@RequestBody Groupe groupe) {
